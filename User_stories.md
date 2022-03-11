@@ -14,8 +14,7 @@ utilisateurs.
 - Je veux pouvoir dupliquer mes deck afin de partir d’une base pré-éxistente pour
 créer un nouveau deck.
 - Je veux pouvoir dupliquer des deck que je visionne dans ma collection de decks
-- Je veux pouvoir visualiser mes decks afin de voir les cartes qu’ils contiennent et
-avoir des statistiques sur ceux-ci (Courbe de mana, couleurs, types de cartes ...)
+- Je veux pouvoir visualiser mes decks afin de voir les cartes qu’ils contiennent.
 - Je veux pouvoir me déconnecter afin de changer de compte.
 - Je veux pouvoir ajouter des cartes à ma collection afin de visualiser les cartes que
 je possède.
@@ -29,6 +28,14 @@ des cartes en fonction de différents critères
 - Je veux pouvoir visualiser une carte afin de voir plus en détail ses caractéristiques
 - Je veux pouvoir ajouter une carte que je visualise à ma collection afin de tenir ma
 collection à jour.
+- Je veux pouvoir voir les cartes/extentions bannies lorsque je crée mon deck en fonction du format de celui-ci afin de ne pas perdre de temps à rechercher des cartes non disponibles.
+- Je veux me faire recommender des cartes quand je crée un deck afin d'avoir de l'inspiration.
+- Je veux choisir les à l'avance les couleurs du deck que je vais créer afin de me voir proposer des cartes uniquement de ces couleurs là.
+- Je veux avoir des statistiques sur mes decks afin de voir comment les améliorer (Courbe de mana, couleurs, types de cartes ...)
+- Je veux pouvoir générer une main aléatoirement quand je regarde la page de mon deck afin de pouvoir voir une main qui pourrais tomber en jeu.
+- Je veux pouvoir modifier le type d'affichage de mes decks afin de les visionner de manière différentes et voir les information que je veux en priorité.
+- Je veux pouvoir acceder à un wiki afin de pouvoir trouver une définition d'un effet dans le jeu.
+
 ## En tant qu’utilisateur non connecté, ...
 - Je veux pouvoir créer un compte afin de pouvoir enregistrer des données qui me
 sont propres.
