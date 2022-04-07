@@ -6,7 +6,7 @@
 ## F1| L'utilisateur déconnecté pourra depuis la page de connection
 - F1A| Se connecter à son compte avec son pseudo ou son adresse mail, et un mot de passe
 - F1B| S'inscrire en renseignant une adresse e-mail, un pseudo, un mot de passe et une confirmation de ce mot de passe (à voir si besoin de plus d'info)
-- F1C| (Se connecter avec son compte google ou autre (OAuth) avec un bouton dédié)
+- F1C| Se connecter avec son compte google ou autre (OAuth) avec un bouton dédié
 
 ## F2| L'utilisateur connecté pourra depuis son profil
 - F2A| Modifier son email en renseignant au préhalable son email actuel et son mot de passe
@@ -15,19 +15,19 @@
 - F2D| Modifier ses informations utilisateur en modifiant le contenu des champs dédiés 
 
 ## F3| L'utilisateur connecté ou non pourra depuis la page rechercher
-- F3A| Rechercher une carte en particulier en entrant le nom de la carte dans le champ "rechercher"
+- F3A| Rechercher une carte en particulier en entrant le nom de la carte dans le champ "rechercher". (Réfléchir à comment afficher les résultats)
 - F3B| Visualiser une carte en passant sa souris dessus
-- F3C| Visualiser en détail une carte en cliquant dessus
+- F3C| Aller sur la page détaillée d'une carte en cliquant dessus
 - F3D| Rechercher des cartes par couleur grâce à des checkboxs
 - F3E| Rechercher des cartes par rareté grâce à une liste déroulante
 - F3F| Rechercher des cartes par coût (grâce à un champ num de taille 2/grâce à une liste déroulante)
 - F3G| Rechercher des cartes par extension grâce à une liste déroulante 
 - F3H| Si connecté, ajouter cette carte à sa collection grâce à un bouton
-- F3I| (Rechercher des cartes par format grâce à une liste déroulante (peut être utile pour commander ou pour le standards))
+- F3I| Rechercher des cartes par format grâce à une liste déroulante (peut être utile pour commander ou pour le standards)
 
 ## F4| L'utilisateur connecté pourra depuis la page création de deck 
-- F4A| Créer un deck, carte par carte, en cliquant sur le bouton dédié, puis en rentrant les informations nécessaires à la création du deck (nom, couleurs, ...)
-- F4B| Visualiser ses decks en cliquant dessus  
+- F4A| Créer un deck grâce à un bouton qui ouvre une popin (modale) avec un formulaire pour remplir les information concernant le deck (Nom, couleurs, description, format...). Apres validation du formulaire, l'utilisateur sera redirigé vers la page du deck en mode edition du deck créé.
+- F4B| Depuis la page avec la listes des decks de l'utilisateur, visualiser ses decks en cliquant dessus  
 - F4C| Modifier ses decks en cliquant dessus puis en ajoutant/retirant des cartes
 - F4D| Modifier le type d'affichage de ses decks (condensé, étendu, ...) grçace à des checkbox/liste déroulante
 - F4E| Visualiser une carte en détail en cliquant dessus (ouvre une fenêtre pop-in)
@@ -35,9 +35,9 @@
 - F4G| Définir dès la création de deck les couleurs qu'il voudra jouer grâce à des checkbox 
 - F4H| Choisir le format de son deck(commander, standard, libre, ...) lors de la création du deck ou pendant modification grâce à une liste déroulante
 - F4I| Générer une main aléatoire dans l'onglet statistique, l'utilisateur pourra relancer plusieurs fois cette main (checkbox pour mulligan ou non?)
-- F4J| Importer\exporter des decklists format .txt depuis l'interface de visualisation du deck sélectionné
+- F4J| Importer\exporter des decklists format '.txt, csv, ...) depuis l'interface de visualisation du deck sélectionné
 - F4K| Dupliquer un deck (possédé ou celui d'un autre joueur) depuis l'interface de visualisation des decks de l'utilisateur en cliquant sur le bouton dédié
-- F4L| Afficher des cartes pertinantes en fonction des couleurs choisies (à l'aide d'un onglet?)
+- F4L| Afficher des cartes pertinantes en fonction des couleurs choisies (à l'aide d'un onglet? bouton qui ouvre une popin avec 3 cartes qui pourrait correspondre, un peu comme dans un jeu de carte proposé par Blizzard?)
 - F4M| Visualiser les cartes bannies dans le format choisi (pop-in à l'aide d'un bouton?)
 - F4N| Se faire recommandé des cartes pertinantes pour son deck grâce à un bouton dédié sur la page du deck sélectionné
 
