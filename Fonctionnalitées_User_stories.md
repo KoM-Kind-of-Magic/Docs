@@ -2,7 +2,7 @@
 Fonctionnalitées par ordre d'importance
 
 ## I. L'utilisateur pourra depuis la page "User decklists" 
-- 1) Créer un deck grâce à un bouton qui ouvre une popin (modale) avec un formulaire pour remplir les information concernant le deck (Nom, couleurs, description, format...). Apres validation du formulaire, l'utilisateur sera redirigé vers la page du deck en mode edition du deck créé.
+- 1) Créer un deck grâce à un bouton qui ouvre une pop-in (modale) avec un formulaire pour remplir les information concernant le deck (Nom, couleurs, description, format...). Apres validation du formulaire, l'utilisateur sera redirigé vers la page du deck en mode edition du deck créé.
 - 2) Depuis la page avec la listes des decks de l'utilisateur, visualiser ses decks en cliquant dessus  
 - 3) Modifier ses decks en cliquant dessus puis en ajoutant/retirant des cartes
 - 4) Modifier le type d'affichage de ses decks (condensé, étendu, ...) grçace à des checkbox/liste déroulante
@@ -13,7 +13,7 @@ Fonctionnalitées par ordre d'importance
 - 9) Générer une main aléatoire dans l'onglet statistique, l'utilisateur pourra relancer plusieurs fois cette main (checkbox pour mulligan ou non?)
 - 10) Importer\exporter des decklists format '.txt, csv, ...) depuis l'interface de visualisation du deck sélectionné
 - 11) Dupliquer un deck (possédé ou celui d'un autre joueur) depuis l'interface de visualisation des decks de l'utilisateur en cliquant sur le bouton dédié
-- 12) Afficher des cartes pertinantes en fonction des couleurs choisies (à l'aide d'un onglet? bouton qui ouvre une popin avec 3 cartes qui pourrait correspondre, un peu comme dans un jeu de carte proposé par Blizzard?)
+- 12) Afficher des cartes pertinantes en fonction des couleurs choisies (à l'aide d'un onglet? bouton qui ouvre une pop-in avec 3 cartes qui pourrait correspondre, un peu comme dans un jeu de carte proposé par Blizzard?)
 - 13) Visualiser les cartes bannies dans le format choisi (pop-in à l'aide d'un bouton?)
 - 14) Se faire recommandé des cartes pertinantes pour son deck grâce à un bouton dédié sur la page du deck sélectionné
 
