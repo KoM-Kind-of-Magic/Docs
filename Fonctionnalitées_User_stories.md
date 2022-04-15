@@ -5,7 +5,7 @@ Fonctionnalitées par ordre d'importance
 1. Créer un deck grâce à un bouton qui ouvre une pop-in (modale) avec un formulaire pour remplir les information concernant le deck (Nom, couleurs, description, format...). Apres validation du formulaire, l'utilisateur sera redirigé vers la page du deck en mode edition du deck créé.
 2. Depuis la page avec la listes des decks de l'utilisateur, visualiser ses decks en cliquant dessus  
 3. Modifier ses decks en cliquant dessus puis en ajoutant/retirant des cartes
-4. Modifier le type d'affichage de ses decks (condensé, étendu, ...) grçace à des checkbox/liste déroulante
+4. Modifier le type d'affichage de ses decks (condensé, étendu, ...) grace à des checkbox/liste déroulante
 5. Visualiser une carte en détail en cliquant dessus (ouvre une fenêtre pop-in)
 6. Visualiser des statistiques sur ses decks (nombre de carte par coût, type de carte, couleur, ...) en cliquant sur l'onglet dédié sur la page du deck sélectionné
 7. Définir dès la création de deck les couleurs qu'il voudra jouer grâce à des checkbox 
