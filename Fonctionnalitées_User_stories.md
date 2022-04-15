@@ -2,13 +2,13 @@
 Fonctionnalitées par ordre d'importance
 
 ## I. L'utilisateur pourra depuis la page "User decklists" 
-- 1. Créer un deck grâce à un bouton qui ouvre une pop-in (modale) avec un formulaire pour remplir les information concernant le deck (Nom, couleurs, description, format...). Apres validation du formulaire, l'utilisateur sera redirigé vers la page du deck en mode edition du deck créé.
-- 2. Depuis la page avec la listes des decks de l'utilisateur, visualiser ses decks en cliquant dessus  
-- 3. Modifier ses decks en cliquant dessus puis en ajoutant/retirant des cartes
-- 4. Modifier le type d'affichage de ses decks (condensé, étendu, ...) grçace à des checkbox/liste déroulante
-- 5. Visualiser une carte en détail en cliquant dessus (ouvre une fenêtre pop-in)
-- 6. Visualiser des statistiques sur ses decks (nombre de carte par coût, type de carte, couleur, ...) en cliquant sur l'onglet dédié sur la page du deck sélectionné
-- 7. Définir dès la création de deck les couleurs qu'il voudra jouer grâce à des checkbox 
+1. Créer un deck grâce à un bouton qui ouvre une pop-in (modale) avec un formulaire pour remplir les information concernant le deck (Nom, couleurs, description, format...). Apres validation du formulaire, l'utilisateur sera redirigé vers la page du deck en mode edition du deck créé.
+2. Depuis la page avec la listes des decks de l'utilisateur, visualiser ses decks en cliquant dessus  
+3. Modifier ses decks en cliquant dessus puis en ajoutant/retirant des cartes
+4. Modifier le type d'affichage de ses decks (condensé, étendu, ...) grçace à des checkbox/liste déroulante
+5. Visualiser une carte en détail en cliquant dessus (ouvre une fenêtre pop-in)
+6. Visualiser des statistiques sur ses decks (nombre de carte par coût, type de carte, couleur, ...) en cliquant sur l'onglet dédié sur la page du deck sélectionné
+7. Définir dès la création de deck les couleurs qu'il voudra jouer grâce à des checkbox 
 8. Choisir le format de son deck(commander, standard, libre, ...) lors de la création du deck ou pendant modification grâce à une liste déroulante
 9. Générer une main aléatoire dans l'onglet statistique, l'utilisateur pourra relancer plusieurs fois cette main (checkbox pour mulligan ou non?)
 10. Importer\exporter des decklists format '.txt, csv, ...) depuis l'interface de visualisation du deck sélectionné
