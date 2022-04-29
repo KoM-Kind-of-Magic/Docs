@@ -64,3 +64,7 @@ We will use also eslint ans prettier for our node.js project, to setup the back-
 
 *Of course, we must be rigorous and don't use another formater with our IDE or code editor.*
 
+## Tools we use
+
+Design and mockups : **Figma** <br>
+Database creation  tool : **JMerise** & **DBDiagram.io**
