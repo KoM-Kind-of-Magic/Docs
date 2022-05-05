@@ -1,0 +1,42 @@
+// Creating tables
+Table user {
+  user_id int [pk, increment] // auto-increment
+  nickname varchar
+  email varchar [not null]
+  password varchar [not null]
+  created_at datetime [default: `now()`]
+  updated_at datetime
+}
+
+Table deck {
+  deck_id int [pk, increment] // auto-increment
+  name varchar
+  format varchar
+  type varchar
+  created_at datetime [default: `now()`]
+  updated_at datetime
+  user_id int [ref: > user.user_id]
+  representing_card_uuid varchar [ref: > card.uuid]
+}
+
+Table card {
+  uuid varchar [pk]
+}
+
+Table user_card {
+  user_id int [ref: > user.user_id]
+  uuid int [ref: > card.uuid]
+  amount int [not null]
+}
+
+Table card_deck {
+  deck_id int [ref: > deck.deck_id]
+  uuid int [ref: > card.uuid]
+  amount int [not null]
+  sideboard sideboard_status [not null]
+}
+
+Enum sideboard_status {
+  1
+  0
+}
