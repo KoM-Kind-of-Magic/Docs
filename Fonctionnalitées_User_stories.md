@@ -36,21 +36,21 @@ Fonctionnalitées par ordre d'importance
 5. Trier les cartes par rareté grâce à des checkbox
 6. Visualiser le nombre de carte qu'il possède d'une ou plusieurs extensions (mise en place d'une progress bar)
 
-## IV. L'utilisateur pourra depuis la page "Community decklists" (visualisation de decks/éxemples d'autres utilisateurs) - 1,5 Mois
-1. Visualiser des decklists en cliquant dessus
-2. Exporter une decklist au format .txt pour que l'utilisateur puisse l'importer dans sa decklist
-3. Trier les decklists en fonction du format grâce à une liste déroulante
-
-## V. L'utilisateur pourra depuis la page "Sign in" - 0,5 Mois
+## IV. L'utilisateur pourra depuis la page "Sign in" - 0,5 Mois
 1. Se connecter à son compte avec son pseudo ou son adresse mail, et un mot de passe
 2. S'inscrire en renseignant une adresse e-mail, un pseudo, un mot de passe et une confirmation de ce mot de passe (à voir si besoin de plus d'info)
 3. Se connecter avec son compte google ou autre (OAuth) avec un bouton dédié
 
-## VI. L'utilisateur pourra depuis la page "User profile" - 0,5 Mois
+## V. L'utilisateur pourra depuis la page "User profile" - 0,5 Mois
 1. Modifier son email en renseignant au préhalable son email actuel et son mot de passe
 2. Modifier son mot de passe en renseignant son email et son mot de passe actuel, puis en rentrant et en confirmant le nouveau mot de passe dans les champs dédiés
 3. Modifier son pseudo comme il le souhaite en modifiant le champ "pseudo" 
 4. Modifier ses informations utilisateur en modifiant le contenu des champs dédiés 
+
+## VI. L'utilisateur pourra depuis la page "Community decklists" (visualisation de decks/éxemples d'autres utilisateurs) - 1,5 Mois
+1. Visualiser des decklists en cliquant dessus
+2. Exporter une decklist au format .txt pour que l'utilisateur puisse l'importer dans sa decklist
+3. Trier les decklists en fonction du format grâce à une liste déroulante
 
 ## VII. L'utilisateur pourra depuis la page "Definition" - 2 Mois
 1. Consulter la définition de n'importe quel effet qu'il ne comprend pas (wiki)
