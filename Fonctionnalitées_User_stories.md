@@ -88,10 +88,10 @@ Fonctionnalitées par ordre d'importance
 1. Rechercher une carte en particulier en entrant le nom de la carte dans le champ "rechercher" (Réfléchir à comment afficher les résultats):
     - **Back** : Après lancement de la recherche, le client web fera une requette http en méthode **POST** sur la route `api/search/`.
   
-      Les informations à renseigner obligatoirement :
+      <br>Les informations à renseigner obligatoirement :
       - **UserSearch** : contenu du champ **Rechercher**.
 
-      Les informations qui pourront être renseignées seront:
+      <br>Les informations qui pourront être renseignées seront:
       - **Colors** : Choix de la ou les couleur(s) des cartes affichées parmis les 6 disponibles (
         <img src="img/MagicColorIcons/plain.png" alt="drawing" width="16"/>
         ,<img src="img/MagicColorIcons/island.png" alt="drawing" width="16"/>
@@ -106,12 +106,13 @@ Fonctionnalitées par ordre d'importance
       - **Rarity** : Choix de la rareté des cartes affichées (commune, inhabituelle, rare, mythique, timeshifted).
       - **Extension** : Choix de l'extension des cartes affichées (Kamigawa, Ravnica, Dominaria, eldraine, ...).
 
-      autres requêtes nécessaire :
+      <br>autres requêtes nécessaire :
       - **GET** `api/card/{user_search}` : avec **user_search** = tableau contenant les données de toutes les cartes correspondant à la recherche (dont le nom correspond à la recherche spécifiée).
       Les informations renseignées lors de la précédente requête le seront automatiquement lors de l'exécution de cette requête. 
       
-      Ce qui va être retourné :
+      <br>Ce qui va être retourné :
       - Liste de cartes contenant dans leur nom **UserSearch** et répondant au critères évoqués précédemment (**Colors**, **Type**, **Rarity**, ...).
+    <br>
 
     - **Front** : L'utilisateur devra cliquer, puis, entrer une partie du nom de la carte qu'il la cherche dans le champ **Rechercher**, puis il devra soit presser la touche **ENTRER**, soit appuyer sur le bouton **Valider**. 
       - L'utilisateur pourra cocher une ou plusieurs cases du champ **Couleurs** représentant les 6 couleurs disponibles (
@@ -134,14 +135,15 @@ Fonctionnalitées par ordre d'importance
     - **Front** : Quand l'utilisateur passera sa souris au dessus d'une des cartes, il y aura un **Zoom** sur cette carte, affichant ainsi l'image associée.
   <br>
 3. Aller sur la page détaillée d'une carte en cliquant dessus:
-    - **Back**: Lorsque l'utilisateur cliquera sur une carte, le client web fera une recherche http en methode **GET** sur la route `api/card/{card_id}`.
+  
+    - **Back** : Lorsque l'utilisateur cliquera sur une carte, le client web fera une recherche http en methode **GET** sur la route `api/card/{card_id}`.
 
-    Les informations générées automatiquement seront:
+    <br>Les informations générées automatiquement seront:
     - **card_id** : id de la carte sélectionnée.
 
-    Ce qui va être retourné : 
+    <br>Ce qui va être retourné : 
     - L'image de la carte.
-    - Des informations sur la carte : son nom, son type, son coût en mana, son extension (nom + symbole), ses effets, des informations sur son effet (définition piétinement, célérité, initiative, ...) et sa déscription.
+    - Des informations sur la carte : son nom, son type, son coût en mana, son extension (nom + symbole), ses effets, des informations sur son effet (définition piétinement, célérité, initiative, ...) et sa déscription.<br>
 
   - **Front**: Quand l'utilisateur cliquera sur une carte, une fenêtre **Pop-in** s'ouvrira contenant diverse informations sur la carte sélectionnée.
     - Le nom de la carte dans la langue de l'utilisateur.
