@@ -56,9 +56,22 @@ Fonctionnalitées par ordre d'importance
         - "Le nom du deck ne doit pas être vide"
         - "Une erreur est survenue"
 
-    
     <br>
-2. Depuis la page avec la listes des decks de l'utilisateur, visualiser ses decks en cliquant dessus  
+2. Visualiser la liste des decks:
+  - **Back** : Au chargement de la page, le client web ferra une requette HTTP en méthode **GET** sur la route `api/deck/get-all-decks`.
+  <br> Cette requette renverra les informations suivantes :
+    - La liste des decks qui ont été créés par l'utilisateur connecté
+    - Les informations de chaques decks nécéssaire à la présentation de celui-ci (**DeckName**, **CreatedBy**, **DeckRepresentative**)
+    - Le nombre de decks possédés par l'utilisateur
+
+    <br>
+  - **Front** : Lors du chargement des decks, l'utilisateur verra un spinner qui disparaîtra lorsque les données sur les deck seront arrivées au navigateur. Si il y a beaucoup de deck, une pagination sera mise en place avec 20 decks par page. 
+  <br> Les decks seront représenté par leur image **DeckRepresentative**, si ils n'en ont pas ce sera le dos d'une carte magic. Autour de la **DeckRepresentative**, il y aura une bordure au couleurs du deck, si le deck n'as pas de couleur, il n'y aura pas de bordure.
+  <br>
+  Losqu'on clique sur la **DeckRepresentative** d'un deck, on est redirigé vers la page du deck.
+
+  <br>
+    
 3. Modifier ses decks en cliquant dessus puis en ajoutant/retirant des cartes
 4. Modifier le type d'affichage de ses decks (condensé, étendu, ...) grace à des checkbox/liste déroulante
 5. Visualiser une carte en détail en cliquant dessus (ouvre une fenêtre pop-in)
