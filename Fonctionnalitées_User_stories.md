@@ -61,9 +61,8 @@ Fonctionnalitées par ordre d'importance
     <br> Cette requette renverra les informations suivantes :
       - La liste des decks qui ont été créés par l'utilisateur connecté
       - Les informations de chaques decks nécéssaire à la présentation de celui-ci (**DeckName**, **CreatedBy**, **DeckRepresentative**)
-      - Le nombre de decks possédés par l'utilisateur
-
-    <br>
+      - Le nombre de decks possédés par l'utilisateur <br>
+    
     - **Front** : Lors du chargement des decks, l'utilisateur verra un spinner qui disparaîtra lorsque les données sur les deck seront arrivées au navigateur. Si il y a beaucoup de deck, une pagination sera mise en place avec 20 decks par page. 
     <br> Les decks seront représenté par leur image **DeckRepresentative**, si ils n'en ont pas ce sera le dos d'une carte magic. Autour de la **DeckRepresentative**, il y aura une bordure au couleurs du deck, si le deck n'as pas de couleur, il n'y aura pas de bordure.
     <br>
@@ -85,7 +84,7 @@ Fonctionnalitées par ordre d'importance
 
 ## II. L'utilisateur pourra depuis la page "Search" - 1,5 Mois
 1. Rechercher une carte en particulier en entrant le nom de la carte dans le champ "rechercher" (Réfléchir à comment afficher les résultats):
-    - **Back** : Après lancement de la recherche, le client web fera une requette http en méthode **POST** sur la route `api/search/`.
+    - **Back** : Après lancement de la recherche, le client web fera une requette http en méthode **POST** sur la route `api/search`.
   
       Les informations à renseigner obligatoirement :
       - **UserSearch** : contenu du champ **Rechercher**.
