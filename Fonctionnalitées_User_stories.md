@@ -55,7 +55,6 @@ Fonctionnalitées par ordre d'importance
         Exemple :
         - "Le nom du deck ne doit pas être vide"
         - "Une erreur est survenue"
-
     <br>
 2. Visualiser la liste des decks:
   - **Back** : Au chargement de la page, le client web ferra une requette HTTP en méthode **GET** sur la route `api/deck/get-all-decks`.
@@ -86,13 +85,13 @@ Fonctionnalitées par ordre d'importance
 14. Se faire recommandé des cartes pertinantes pour son deck grâce à un bouton dédié sur la page du deck sélectionné
 
 ## II. L'utilisateur pourra depuis la page "Search" - 1,5 Mois
-1. Rechercher une carte en particulier en entrant le nom de la carte dans le champ "rechercher". (Réfléchir à comment afficher les résultats)
+1. Rechercher une carte en particulier en entrant le nom de la carte dans le champ "rechercher" (Réfléchir à comment afficher les résultats):
     - **Back** : Après lancement de la recherche, le client web fera une requette http en méthode **POST** sur la route `api/search/`.
   
-      <br> Les informations à renseigner obligatoirement :
+      Les informations à renseigner obligatoirement :
       - **UserSearch** : contenu du champ **Rechercher**.
 
-      <br> Les informations qui pourront être renseignées seront:
+      Les informations qui pourront être renseignées seront:
       - **Colors** : Choix de la ou les couleur(s) des cartes affichées parmis les 6 disponibles (
         <img src="img/MagicColorIcons/plain.png" alt="drawing" width="16"/>
         ,<img src="img/MagicColorIcons/island.png" alt="drawing" width="16"/>
@@ -107,11 +106,11 @@ Fonctionnalitées par ordre d'importance
       - **Rarity** : Choix de la rareté des cartes affichées (commune, inhabituelle, rare, mythique, timeshifted).
       - **Extension** : Choix de l'extension des cartes affichées (Kamigawa, Ravnica, Dominaria, eldraine, ...).
 
-      <br> autres requêtes nécessaire :
+      autres requêtes nécessaire :
       - **GET** `api/card/{user_search}` : avec **user_search** = tableau contenant les données de toutes les cartes correspondant à la recherche (dont le nom correspond à la recherche spécifiée).
       Les informations renseignées lors de la précédente requête le seront automatiquement lors de l'exécution de cette requête. 
       
-      <br> Ce qui va être retourné :
+      Ce qui va être retourné :
       - Liste de cartes contenant dans leur nom **UserSearch** et répondant au critères évoqués précédemment (**Colors**, **Type**, **Rarity**, ...).
 
     - **Front** : L'utilisateur devra cliquer, puis, entrer une partie du nom de la carte qu'il la cherche dans le champ **Rechercher**, puis il devra soit presser la touche **ENTRER**, soit appuyer sur le bouton **Valider**. 
@@ -131,19 +130,16 @@ Fonctionnalitées par ordre d'importance
       - Les cartes seront affichées sous forme de liste (coût de la carte -> nom de la carte -> au bout de la ligne : extension de la carte).
   
     <br>
-2. Visualiser une carte en passant sa souris dessus
-    <!-- - **back** : Lorsque l'utilisateur passera sa souris sur une carte, le client web fera une requête http en méthode **GET** sur la route `api\card\{card_id}` avec **card_id** = l'id de la carte sélectionnée
-    <br> -->
-
+2. Visualiser une carte en passant sa souris dessus:
     - **Front** : Quand l'utilisateur passera sa souris au dessus d'une des cartes, il y aura un **Zoom** sur cette carte, affichant ainsi l'image associée.
   <br>
-3. Aller sur la page détaillée d'une carte en cliquant dessus
+3. Aller sur la page détaillée d'une carte en cliquant dessus:
     - **Back**: Lorsque l'utilisateur cliquera sur une carte, le client web fera une recherche http en methode **GET** sur la route `api/card/{card_id}`.
 
-    <br> Les informations générées automatiquement seront:
+    Les informations générées automatiquement seront:
     - **card_id** : id de la carte sélectionnée.
 
-    <br> Ce qui va être retourné : 
+    Ce qui va être retourné : 
     - L'image de la carte.
     - Des informations sur la carte : son nom, son type, son coût en mana, son extension (nom + symbole), ses effets, des informations sur son effet (définition piétinement, célérité, initiative, ...) et sa déscription.
 
