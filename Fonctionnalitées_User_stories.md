@@ -57,20 +57,19 @@ Fonctionnalitées par ordre d'importance
         - "Une erreur est survenue"
     <br>
 2. Visualiser la liste des decks:
-  - **Back** : Au chargement de la page, le client web ferra une requette HTTP en méthode **GET** sur la route `api/deck/get-all-decks`.
-  <br> Cette requette renverra les informations suivantes :
-    - La liste des decks qui ont été créés par l'utilisateur connecté
-    - Les informations de chaques decks nécéssaire à la présentation de celui-ci (**DeckName**, **CreatedBy**, **DeckRepresentative**)
-    - Le nombre de decks possédés par l'utilisateur
+    - **Back** : Au chargement de la page, le client web ferra une requette HTTP en méthode **GET** sur la route `api/deck/get-all-decks`.
+    <br> Cette requette renverra les informations suivantes :
+      - La liste des decks qui ont été créés par l'utilisateur connecté
+      - Les informations de chaques decks nécéssaire à la présentation de celui-ci (**DeckName**, **CreatedBy**, **DeckRepresentative**)
+      - Le nombre de decks possédés par l'utilisateur
 
     <br>
-  - **Front** : Lors du chargement des decks, l'utilisateur verra un spinner qui disparaîtra lorsque les données sur les deck seront arrivées au navigateur. Si il y a beaucoup de deck, une pagination sera mise en place avec 20 decks par page. 
-  <br> Les decks seront représenté par leur image **DeckRepresentative**, si ils n'en ont pas ce sera le dos d'une carte magic. Autour de la **DeckRepresentative**, il y aura une bordure au couleurs du deck, si le deck n'as pas de couleur, il n'y aura pas de bordure.
-  <br>
-  Losqu'on clique sur la **DeckRepresentative** d'un deck, on est redirigé vers la page du deck.
+    - **Front** : Lors du chargement des decks, l'utilisateur verra un spinner qui disparaîtra lorsque les données sur les deck seront arrivées au navigateur. Si il y a beaucoup de deck, une pagination sera mise en place avec 20 decks par page. 
+    <br> Les decks seront représenté par leur image **DeckRepresentative**, si ils n'en ont pas ce sera le dos d'une carte magic. Autour de la **DeckRepresentative**, il y aura une bordure au couleurs du deck, si le deck n'as pas de couleur, il n'y aura pas de bordure.
+    <br>
+    Losqu'on clique sur la **DeckRepresentative** d'un deck, on est redirigé vers la page du deck.
 
-  <br>
-    
+  <br>  
 3. Modifier ses decks en cliquant dessus puis en ajoutant/retirant des cartes
 4. Modifier le type d'affichage de ses decks (condensé, étendu, ...) grace à des checkbox/liste déroulante
 5. Visualiser une carte en détail en cliquant dessus (ouvre une fenêtre pop-in)
@@ -88,7 +87,7 @@ Fonctionnalitées par ordre d'importance
 1. Rechercher une carte en particulier en entrant le nom de la carte dans le champ "rechercher" (Réfléchir à comment afficher les résultats):
     - **Back** : Après lancement de la recherche, le client web fera une requette http en méthode **POST** sur la route `api/search/`.
   
-      <br>Les informations à renseigner obligatoirement :
+      Les informations à renseigner obligatoirement :
       - **UserSearch** : contenu du champ **Rechercher**.
 
       <br>Les informations qui pourront être renseignées seront:
@@ -133,25 +132,25 @@ Fonctionnalitées par ordre d'importance
     <br>
 2. Visualiser une carte en passant sa souris dessus:
     - **Front** : Quand l'utilisateur passera sa souris au dessus d'une des cartes, il y aura un **Zoom** sur cette carte, affichant ainsi l'image associée.
+
   <br>
 3. Aller sur la page détaillée d'une carte en cliquant dessus:
-  
     - **Back** : Lorsque l'utilisateur cliquera sur une carte, le client web fera une recherche http en methode **GET** sur la route `api/card/{card_id}`.
 
-    <br>Les informations générées automatiquement seront:
-    - **card_id** : id de la carte sélectionnée.
+      Les informations générées automatiquement seront:
+      - **card_id** : id de la carte sélectionnée.
 
-    <br>Ce qui va être retourné : 
-    - L'image de la carte.
-    - Des informations sur la carte : son nom, son type, son coût en mana, son extension (nom + symbole), ses effets, des informations sur son effet (définition piétinement, célérité, initiative, ...) et sa déscription.<br>
+      <br>Ce qui va être retourné : 
+      - L'image de la carte.
+      - Des informations sur la carte : son nom, son type, son coût en mana, son extension (nom + symbole), ses effets, des informations sur son effet (définition piétinement, célérité, initiative, ...) et sa déscription.<br>
 
-  - **Front**: Quand l'utilisateur cliquera sur une carte, une fenêtre **Pop-in** s'ouvrira contenant diverse informations sur la carte sélectionnée.
-    - Le nom de la carte dans la langue de l'utilisateur.
-    - Le coût en mana de la carte.
-    - Le type de la carte (créature, éphémère, rituel, artefact, enchantement, ...).
-    - Les effets de la carte.
-    - Des détails concernant certains effets (piétinement, célérité, initiative, ...).
-    - La description de la carte
+    - **Front**: Quand l'utilisateur cliquera sur une carte, une fenêtre **Pop-in** s'ouvrira contenant diverse informations sur la carte sélectionnée.
+      - Le nom de la carte dans la langue de l'utilisateur.
+      - Le coût en mana de la carte.
+      - Le type de la carte (créature, éphémère, rituel, artefact, enchantement, ...).
+      - Les effets de la carte.
+      - Des détails concernant certains effets (piétinement, célérité, initiative, ...).
+      - La description de la carte
 
     <br>
 4. Si connecté, ajouter cette carte à sa collection grâce à un bouton
