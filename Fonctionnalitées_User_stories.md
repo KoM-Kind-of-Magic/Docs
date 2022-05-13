@@ -17,7 +17,7 @@ Fonctionnalitées par ordre d'importance
       ,<img src="img/MagicColorIcons/montain.png" alt="drawing" width="16"/>
       ,<img src="img/MagicColorIcons/forest.png" alt="drawing" width="16"/>
       ,<img src="img/MagicColorIcons/colorless.png" alt="drawing" width="16"/>) (Enum)
-      - **DeckRepresentative** : Carte qui représentera de deck (le commandant si le format est commander, sinon un carte choisie) (uuid référençant à une carte)
+      - **DeckRepresentative** : Carte qui représentera le deck (le commandant si le format est commander, sinon un carte choisie) (uuid référençant à une carte)
 
       <br> Les informations générées automatiquement seront :
       - **DeckColor** : Si l'utilisateur n'as pas envoyé les couleurs dans le formulaire de création, les couleurs du deck sont déterminées à partir des couleurs des cartes dans celui-ci. (Enum)
@@ -74,14 +74,42 @@ Fonctionnalitées par ordre d'importance
 
 ## II. L'utilisateur pourra depuis la page "Search" - 1,5 Mois
 1. Rechercher une carte en particulier en entrant le nom de la carte dans le champ "rechercher". (Réfléchir à comment afficher les résultats)
+    - **Back** : Après lancement de la recherche, le client web ferra une requette http en méthode **GET** sur la route `api\search`. 
+      <br> Les informations qui pourront être renseignées seront:
+      - **Colors** : Choix de la ou les couleur(s) des cartes affichées par mis les 6 disponibles (
+        <img src="img/MagicColorIcons/plain.png" alt="drawing" width="16"/>
+        ,<img src="img/MagicColorIcons/island.png" alt="drawing" width="16"/>
+        ,<img src="img/MagicColorIcons/swamp.png" alt="drawing" width="16"/>
+        ,<img src="img/MagicColorIcons/montain.png" alt="drawing" width="16"/>
+        ,<img src="img/MagicColorIcons/forest.png" alt="drawing" width="16"/>
+        ,<img src="img/MagicColorIcons/colorless.png" alt="drawing" width="16"/>
+      ). 
+      - **ManaCost** : Choix du coût en mana des cartes affichées (2 chiffres maximum, X et XX possible).
+      - **Type** : Choix du ou des type(s) des cartes affichées (créature, éphémère, rituel, artefact, enchantement, terrain, ...).
+      - **Rarity** : Choix de la rareté des cartes affichées (commune, inhabituelle, rare, mythique, timeshifted).
+      - **Extension** : Choix de l'extension des cartes affichées (Kamigawa, Ravnica, Dominaria, eldraine, ...).
+      
+      <br>
+
+    - **Front** : L'utilisateur devra cliquer, puis, entrer une partie du nom de la carte qu'il la cherche dans le champ **Rechercher**, puis il devra soit presser la touche **ENTRER**, soit appuyer sur le bouton **Valider**. 
+      - L'utilisateur pourra cocher une ou plusieurs cases du champ **Couleurs** représentant les 6 couleurs disponibles (
+        <img src="img/MagicColorIcons/plain.png" alt="drawing" width="16"/>
+        ,<img src="img/MagicColorIcons/island.png" alt="drawing" width="16"/>
+        ,<img src="img/MagicColorIcons/swamp.png" alt="drawing" width="16"/>
+        ,<img src="img/MagicColorIcons/montain.png" alt="drawing" width="16"/>
+        ,<img src="img/MagicColorIcons/forest.png" alt="drawing" width="16"/>
+        ,<img src="img/MagicColorIcons/colorless.png" alt="drawing" width="16"/>
+      ).
+      - L'utilisateur pourra rentrer dans le champ **Coût en mana** soit un nombre entre 0 et 99, soit X ou XX (représente les cartes ayant un ou 2 coût(s) variable), représentant le coût de la carte recherchée.
+      - L'utilisateur pourra cocher une ou plusieurs cases du champ **Type de carte** représentant les types de la carte recherchée (créature, éphémère, rituel, artefact, enchantement, terrain, ...). 
+      - L'utilisateur pourra cocher une ou plusieurs cases du champ **Rareté** représentant la rareté de la carte recherchée (commune, inhabituelle, rare, mythique, timeshifted).
+      - L'utilisateur pourra depuis la liste déroulante **Extension** choisir l'extension de la carte recherchée.
+  
+    <br>
 2. Visualiser une carte en passant sa souris dessus
 3. Aller sur la page détaillée d'une carte en cliquant dessus
-4. Rechercher des cartes par couleur grâce à des checkboxs
-5. Rechercher des cartes par rareté grâce à une liste déroulante
-6. Rechercher des cartes par coût (grâce à un champ num/grâce à une liste déroulante)
-7. Rechercher des cartes par extension grâce à une liste déroulante 
-8. Si connecté, ajouter cette carte à sa collection grâce à un bouton
-9. Rechercher des cartes par format grâce à une liste déroulante (peut être utile pour commander ou pour le standards)
+4. Si connecté, ajouter cette carte à sa collection grâce à un bouton
+5. Rechercher des cartes par format grâce à une liste déroulante (peut être utile pour commander ou pour le standards)
 
 ## III. L'utilisateur pourra depuis la page "Collection" 2,5 Mois
 1. Visualiser sa collection de carte de puis l'interface principale
