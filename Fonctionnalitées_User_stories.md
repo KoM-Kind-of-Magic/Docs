@@ -3,7 +3,7 @@ Fonctionnalitées par ordre d'importance
 
 ## I. L'utilisateur pourra depuis la page "User decklists" - 3 Mois
 1. Créer un deck : 
-    - **Back** : Après validation du formulaire, le client web ferra une requette HTTP en méthode **POST** sur a route `api/deck/create-deck`. 
+    - **Back** : Après validation du formulaire, le client web ferra une requette HTTP en méthode **POST** sur la route `api/deck/create-deck`. 
       <br> Les informations requises seront:
       - **DeckName** : Nom du deck (String)
       - **DeckFormat** : Format du deck (Choix parmi une Liste -> Commander, Standard, Modern, etc...) (Enum)
