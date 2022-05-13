@@ -3,7 +3,7 @@ Fonctionnalitées par ordre d'importance
 
 ## I. L'utilisateur pourra depuis la page "User decklists" - 3 Mois
 1. Créer un deck : 
-    - **Back** : Après validation du formulaire, le client web ferra une requette HTTP en méthode **POST** sur la route `api/deck/create-deck`. 
+    - **Back** : Après validation du formulaire, le client web fera une requette HTTP en méthode **POST** sur la route `api/deck/create-deck`. 
       <br> Les informations requises seront:
       - **DeckName** : Nom du deck (String)
       - **DeckFormat** : Format du deck (Choix parmi une Liste -> Commander, Standard, Modern, etc...) (Enum)
@@ -74,9 +74,13 @@ Fonctionnalitées par ordre d'importance
 
 ## II. L'utilisateur pourra depuis la page "Search" - 1,5 Mois
 1. Rechercher une carte en particulier en entrant le nom de la carte dans le champ "rechercher". (Réfléchir à comment afficher les résultats)
-    - **Back** : Après lancement de la recherche, le client web ferra une requette http en méthode **GET** sur la route `api\search`. 
+    - **Back** : Après lancement de la recherche, le client web fera une requette http en méthode **POST** sur la route `api/search/`.
+  
+      <br> Les informations à renseigner obligatoirement :
+      - **UserSearch** : contenu du champ **Rechercher**.
+
       <br> Les informations qui pourront être renseignées seront:
-      - **Colors** : Choix de la ou les couleur(s) des cartes affichées par mis les 6 disponibles (
+      - **Colors** : Choix de la ou les couleur(s) des cartes affichées parmis les 6 disponibles (
         <img src="img/MagicColorIcons/plain.png" alt="drawing" width="16"/>
         ,<img src="img/MagicColorIcons/island.png" alt="drawing" width="16"/>
         ,<img src="img/MagicColorIcons/swamp.png" alt="drawing" width="16"/>
@@ -84,12 +88,18 @@ Fonctionnalitées par ordre d'importance
         ,<img src="img/MagicColorIcons/forest.png" alt="drawing" width="16"/>
         ,<img src="img/MagicColorIcons/colorless.png" alt="drawing" width="16"/>
       ). 
-      - **ManaCost** : Choix du coût en mana des cartes affichées (2 chiffres maximum, X et XX possible).
+      - **MinCoveredManaCost** : coût en mana minimum des cartes affichées.
+      - **MaxCoveredManaCost** : coût en mana maximum des cartes affichées.
       - **Type** : Choix du ou des type(s) des cartes affichées (créature, éphémère, rituel, artefact, enchantement, terrain, ...).
       - **Rarity** : Choix de la rareté des cartes affichées (commune, inhabituelle, rare, mythique, timeshifted).
       - **Extension** : Choix de l'extension des cartes affichées (Kamigawa, Ravnica, Dominaria, eldraine, ...).
+
+      <br> autres requêtes nécessaire :
+      - **GET** `api/card/{user_search}` : avec **user_search** = tableau contenant les données de toutes les cartes correspondant à la recherche (dont le nom correspond à la recherche spécifiée).
+      Les informations renseignées lors de la précédente requête le seront automatiquement lors de l'exécution de cette requête. 
       
-      <br>
+      <br> Ce qui va être retourné :
+      - Liste de cartes contenant dans leur nom **UserSearch** et répondant au critères évoqués précédemment (**Colors**, **Type**, **Rarity**, ...).
 
     - **Front** : L'utilisateur devra cliquer, puis, entrer une partie du nom de la carte qu'il la cherche dans le champ **Rechercher**, puis il devra soit presser la touche **ENTRER**, soit appuyer sur le bouton **Valider**. 
       - L'utilisateur pourra cocher une ou plusieurs cases du champ **Couleurs** représentant les 6 couleurs disponibles (
@@ -100,14 +110,39 @@ Fonctionnalitées par ordre d'importance
         ,<img src="img/MagicColorIcons/forest.png" alt="drawing" width="16"/>
         ,<img src="img/MagicColorIcons/colorless.png" alt="drawing" width="16"/>
       ).
-      - L'utilisateur pourra rentrer dans le champ **Coût en mana** soit un nombre entre 0 et 99, soit X ou XX (représente les cartes ayant un ou 2 coût(s) variable), représentant le coût de la carte recherchée.
+      - L'utilisateur pourra rentrer dans le champ **Coût minimum** un nombre représentant le coût minimum des cartes à afficher.
+      - L'utilisateur pourra rentrer dans le champ **Coût maximum** un nombre représentant le coût maximum des cartes à afficher.
       - L'utilisateur pourra cocher une ou plusieurs cases du champ **Type de carte** représentant les types de la carte recherchée (créature, éphémère, rituel, artefact, enchantement, terrain, ...). 
       - L'utilisateur pourra cocher une ou plusieurs cases du champ **Rareté** représentant la rareté de la carte recherchée (commune, inhabituelle, rare, mythique, timeshifted).
       - L'utilisateur pourra depuis la liste déroulante **Extension** choisir l'extension de la carte recherchée.
+      - Les cartes seront affichées sous forme de liste (coût de la carte -> nom de la carte -> au bout de la ligne : extension de la carte).
   
     <br>
 2. Visualiser une carte en passant sa souris dessus
+    <!-- - **back** : Lorsque l'utilisateur passera sa souris sur une carte, le client web fera une requête http en méthode **GET** sur la route `api\card\{card_id}` avec **card_id** = l'id de la carte sélectionnée
+    <br> -->
+
+    - **Front** : Quand l'utilisateur passera sa souris au dessus d'une des cartes, il y aura un **Zoom** sur cette carte, affichant ainsi l'image associée.
+  <br>
 3. Aller sur la page détaillée d'une carte en cliquant dessus
+    - **Back**: Lorsque l'utilisateur cliquera sur une carte, le client web fera une recherche http en methode **GET** sur la route `api/card/{card_id}`.
+
+    <br> Les informations générées automatiquement seront:
+    - **card_id** : id de la carte sélectionnée.
+
+    <br> Ce qui va être retourné : 
+    - L'image de la carte.
+    - Des informations sur la carte : son nom, son type, son coût en mana, son extension (nom + symbole), ses effets, des informations sur son effet (définition piétinement, célérité, initiative, ...) et sa déscription.
+
+  - **Front**: Quand l'utilisateur cliquera sur une carte, une fenêtre **Pop-in** s'ouvrira contenant diverse informations sur la carte sélectionnée.
+    - Le nom de la carte dans la langue de l'utilisateur.
+    - Le coût en mana de la carte.
+    - Le type de la carte (créature, éphémère, rituel, artefact, enchantement, ...).
+    - Les effets de la carte.
+    - Des détails concernant certains effets (piétinement, célérité, initiative, ...).
+    - La description de la carte
+
+    <br>
 4. Si connecté, ajouter cette carte à sa collection grâce à un bouton
 5. Rechercher des cartes par format grâce à une liste déroulante (peut être utile pour commander ou pour le standards)
 
