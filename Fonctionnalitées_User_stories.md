@@ -2,7 +2,62 @@
 Fonctionnalitées par ordre d'importance
 
 ## I. L'utilisateur pourra depuis la page "User decklists" - 3 Mois
-1. Créer un deck grâce à un bouton qui ouvre une pop-in (modale) avec un formulaire pour remplir les information concernant le deck (Nom, couleurs, description, format...). Apres validation du formulaire, l'utilisateur sera redirigé vers la page du deck en mode edition du deck créé.
+1. Créer un deck : 
+    - **Back** : Après validation du formulaire, le client web ferra une requette HTTP en méthode **POST** sur a route `api/deck/create-deck`. 
+      <br> Les informations requises seront:
+      - **DeckName** : Nom du deck (String)
+      - **DeckFormat** : Format du deck (Choix parmi une Liste -> Commander, Standard, Modern, etc...) (Enum)
+
+      <br> Les informations optionnelles seront :
+      - **DeckDescription** : Une description du deck (String)
+      - **DeckColor** : Choix parmis les 6 couleurs de magic
+      (<img src="img/MagicColorIcons/plain.png" alt="drawing" width="16"/>
+      ,<img src="img/MagicColorIcons/island.png" alt="drawing" width="16"/>
+      ,<img src="img/MagicColorIcons/swamp.png" alt="drawing" width="16"/>
+      ,<img src="img/MagicColorIcons/montain.png" alt="drawing" width="16"/>
+      ,<img src="img/MagicColorIcons/forest.png" alt="drawing" width="16"/>
+      ,<img src="img/MagicColorIcons/colorless.png" alt="drawing" width="16"/>) (Enum)
+      - **DeckRepresentative** : Carte qui représentera de deck (le commandant si le format est commander, sinon un carte choisie) (uuid référençant à une carte)
+
+      <br> Les informations générées automatiquement seront :
+      - **DeckColor** : Si l'utilisateur n'as pas envoyé les couleurs dans le formulaire de création, les couleurs du deck sont déterminées à partir des couleurs des cartes dans celui-ci. (Enum)
+      - **CreationDate** : Date de création du deck (yyyy:mm:dd h:m:s) (Date)
+      - **CreatedBy** : ID du créateur du deck (Utilisateur connecté / Anonymous) (Int)
+      - **DeckId** : Identifiant en base de données du deck (Int)
+      
+      <br>
+    - **Front** : L'utilisateur devra cliquer sur un bouton "Créer un Deck" sur la page de visualisation des decks. Lorsque l'utilisateur clique sur le bouton "Créer un Deck" un popin (modale) s'ouvrira. La popin pourra se fermer soit : 
+      - En cliquant sur "Annuler" en bas de la modale
+      - En appuyant sur la touche "Esc"
+      - En cliquant sur une croix en haut a droite à l'exterieur de la popin
+
+      <br>
+      Une fois la popin ouverte, l'utilisateur pourra remplir les champs suivant :
+      
+        - Nom du deck (Input Text) [**Required**]
+        - Format du deck (Select)  [**Required**] (Default : Aucun)
+        - Desctiption (Text Area)
+        - Couleurs du deck (Checkboxes avec les 6 couleurs : 
+        <img src="img/MagicColorIcons/plain.png" alt="drawing" width="16"/>
+        ,<img src="img/MagicColorIcons/island.png" alt="drawing" width="16"/>
+        ,<img src="img/MagicColorIcons/swamp.png" alt="drawing" width="16"/>
+        ,<img src="img/MagicColorIcons/montain.png" alt="drawing" width="16"/>
+        ,<img src="img/MagicColorIcons/forest.png" alt="drawing" width="16"/>
+        ,<img src="img/MagicColorIcons/colorless.png" alt="drawing" width="16"/>) 
+        
+        <br>
+        Apres validation du formulaire, l'utilisateur sera redirigé vers la page du deck en mode edition du deck créé.
+
+        <br>
+
+        En cas d'erreur lors de la validation du formulaire, le bouton de validation devindra rouge avec un petit tremblement. De plus, un message d'erreur s'affichera au dessus des bouton de validation de la popin.
+        <br>
+        Exemple :
+        - "Le nom du deck ne doit pas être vide"
+        - "Une erreur est survenue"
+
+    
+    <br>
 2. Depuis la page avec la listes des decks de l'utilisateur, visualiser ses decks en cliquant dessus  
 3. Modifier ses decks en cliquant dessus puis en ajoutant/retirant des cartes
 4. Modifier le type d'affichage de ses decks (condensé, étendu, ...) grace à des checkbox/liste déroulante
