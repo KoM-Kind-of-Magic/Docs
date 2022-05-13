@@ -68,7 +68,7 @@ Fonctionnalitées par ordre d'importance
     <br>
     Losqu'on clique sur la **DeckRepresentative** d'un deck, on est redirigé vers la page du deck.
 
-  <br>  
+    <br>  
 3. Modifier ses decks en cliquant dessus puis en ajoutant/retirant des cartes
 4. Modifier le type d'affichage de ses decks (condensé, étendu, ...) grace à des checkbox/liste déroulante
 5. Visualiser une carte en détail en cliquant dessus (ouvre une fenêtre pop-in)
@@ -132,7 +132,7 @@ Fonctionnalitées par ordre d'importance
 2. Visualiser une carte en passant sa souris dessus:
     - **Front** : Quand l'utilisateur passera sa souris au dessus d'une des cartes, il y aura un **Zoom** sur cette carte, affichant ainsi l'image associée.
 
-  <br>
+    <br>
 3. Aller sur la page détaillée d'une carte en cliquant dessus:
     - **Back** : Lorsque l'utilisateur cliquera sur une carte, le client web fera une recherche http en methode **GET** sur la route `api/card/{card_id}`.
 
