@@ -250,7 +250,24 @@ Fonctionnalitées par ordre d'importance
     
 <br>
 
-2. Visualiser le nombre de carte qu'il possède d'une ou plusieurs extensions (mise en place d'une progress bar):
+2. Supprimer une ou plusieurs cartes qu'il ne souhaite plus voir dans la collection:
+    - **Back** : Lorsque l'utilisateur aura lancé la supression d'une ou plusieurs cartes de sa collection, le client web fera une requette http en methode **DELETE** sur la route `api/collection/delete`.
+
+      <br> Les informations qui devront être renseignés seront :
+      - **CardArray** : Un tableau contenant un ou plusieurs **Id de carte**.
+      - **User_id** : L'id de l'utilisateur.   
+
+      <br>Les cartes sélectionnées seront ainsi supprimées de la collection.
+
+    <br>
+
+    - **Front** : L'utilisateur aura la possibilité de sélectionner une ou plusieurs cartes en cochant une ou plusieurs **checkbox**, en appuyant ensuite sur le bouton supprimer, une **pop-in** apparaitra, affichant un récapitulatif des cartes sélectionnées puis demandant à l'utilisateur si il veut vraiment supprimer ces cartes de sa collection (Êtes-vous sur de vouloir supprimer ces X cartes de votre collection? oui/non).
+    
+    <br>Si l'utilisateur appuie sur "oui" alors les cartes n'apparaitront plus dans sa collection.
+
+    <br>
+
+3. Visualiser le nombre de carte qu'il possède d'une ou plusieurs extensions (mise en place d'une progress bar):
     - **Back** : Lorsque l'utilisateur aura renseigner au moins une extension au sein de la carte "Progression" puis appuyer sur le bouton "valider", le client web fera une requette http en methode **GET** sur la route `api/collection/get_progress_bar`.
 
       <br> Les informations qui devront être renseignés sont :
@@ -272,7 +289,24 @@ Fonctionnalitées par ordre d'importance
       <br>
 
 ## IV. L'utilisateur pourra depuis la page "Sign in" - 0,5 Mois
-1. Se connecter à son compte avec son pseudo ou son adresse mail, et un mot de passe
+1. Se connecter à son compte avec son pseudo ou son adresse mail, et un mot de passe:
+    - **Back** : Lorsque l'utilisateur aura renseigner chaque champ disponible, le client web fera une requette http en methode **POST** sur la route `api/login`
+
+      <br>Les informations qui devront être renseignées :
+      - **Username** ou **Email** : un nom d'utilisateur existant/un email existant
+      - **Password** : un mot de passe correspondant au nom d'utilisateur/email
+
+    <br>
+
+    - **Front** : L'utilisateur devra remplir 2 champs: 
+      - Le 1er champ contiendra son email ou son nom d'utilisateur
+      - Le 2ème champ contiendra son mot de passe
+      - Les informations devront correspondre et être présentes dans la **table User de la base de donnée**
+
+      <br> Une fois les 2 champs remplis, l'utilisateur pourra se connecter en appuyant sur le bouton "login", si ses identifiants sont invalides, un message d'erreur apparaitre ("Votre Username/Email n'existe pas" si l'utilisateur n'existe pas dans la base de donnée et "Votre mot de passe est erroné, veuillez réessayer", si l'utilisateur existe mais le mot de passe ne correspond pas), si les identifiants sont bons, l'utilisateur sera redirigé sur la page "search".
+
+    <br>
+
 2. S'inscrire en renseignant une adresse e-mail, un pseudo, un mot de passe et une confirmation de ce mot de passe (à voir si besoin de plus d'info)
 3. Se connecter avec son compte google ou autre (OAuth) avec un bouton dédié
 
