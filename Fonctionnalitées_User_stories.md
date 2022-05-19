@@ -18,6 +18,7 @@ Fonctionnalitées par ordre d'importance
       ,<img src="img/MagicColorIcons/forest.png" alt="drawing" width="16"/>
       ,<img src="img/MagicColorIcons/colorless.png" alt="drawing" width="16"/>) (Enum)
       - **DeckRepresentative** : Carte qui représentera le deck (le commandant si le format est commander, sinon un carte choisie) (uuid référençant à une carte)
+      - **DeckType** : Type du deck parmis (Aggro, Contrôle, Combo, Ramp)
 
       <br> Les informations générées automatiquement seront :
       - **DeckColor** : Si l'utilisateur n'as pas envoyé les couleurs dans le formulaire de création, les couleurs du deck sont déterminées à partir des couleurs des cartes dans celui-ci. (Enum)
@@ -55,6 +56,7 @@ Fonctionnalitées par ordre d'importance
         Exemple :
         - "Le nom du deck ne doit pas être vide"
         - "Une erreur est survenue"
+        
     <br>
 2. Visualiser la liste des decks:
     - **Back** : Au chargement de la page, le client web ferra une requette HTTP en méthode **GET** sur la route `api/deck/get-all-decks`.
@@ -68,8 +70,41 @@ Fonctionnalitées par ordre d'importance
     <br>
     Losqu'on clique sur la **DeckRepresentative** d'un deck, on est redirigé vers la page du deck.
 
-    <br>  
-3. Modifier ses decks en cliquant dessus puis en ajoutant/retirant des cartes
+3. Modification d'un Deck:
+    - **Back** :  Après validation des modification, le client web fera une requette HTTP en méthode **POST** sur la route `api/deck/update-deck`. Seule les informations modifiées seront envoyées (Ex : si on ne modifie pas le nom du deck, l'attribut **DeckName** ne sera pas envoyé).
+    <br> Les informations requises seront:
+      - **DeckId** : L'identifiant du deck (Int)
+    
+      <br> Les informations optionnelles (à envoyer seulement si elles sont modifiées) seront :
+      - **DeckName** : Nom du deck (String)
+      - **DeckFormat** : Format du deck (Choix parmi une Liste -> Commander, Standard, Modern, etc...) (Enum)
+      - **DeckDescription** : Une description du deck (String)
+      - **DeckColor** : Choix parmis les 6 couleurs de magic
+      (<img src="img/MagicColorIcons/plain.png" alt="drawing" width="16"/>
+      ,<img src="img/MagicColorIcons/island.png" alt="drawing" width="16"/>
+      ,<img src="img/MagicColorIcons/swamp.png" alt="drawing" width="16"/>
+      ,<img src="img/MagicColorIcons/montain.png" alt="drawing" width="16"/>
+      ,<img src="img/MagicColorIcons/forest.png" alt="drawing" width="16"/>
+      ,<img src="img/MagicColorIcons/colorless.png" alt="drawing" width="16"/>) (Enum)
+      - **DeckRepresentative** : Carte qui représentera le deck (le commandant si le format est commander, sinon un carte choisie) (uuid référençant à une carte) (uuid)
+      - **DeckType** : Type du deck parmis (Aggro, Contrôle, Combo, Ramp) (Enum)
+      - **CardList** : Tableau JSON contenant l'uuid des cartes composant le deck à la validation des modification avec le nombre d'exemplaire. (Json)
+
+      <br>
+    - **Front** : Sur la page de visualisation d'un deck, il sera possible de passer en mode Edition afin de pouvoir modifier les cartes qui sont dans le deck.
+    <br>
+    En mode Edition, les actions affichées seront : 
+      - **Champ de recherche**: Il permettra de chercher des cartes à ajouter dans le deck. Les résultats de la recherche seront affiché en dessous du champs de recherche apres chaque input. Quand on passe la souris au dessus du nom de la carte dans les résultats de recherche, on peux voir la carte (Dans la langue choisi dans le profil utilisateur)
+      - **Ajuster le nombre de cartes dans le deck** : Sur chaque cartes il sera possible de modifier le nombre d'exemplaires dans le deck (si 0 retirer la carte au moment de la sauvegarde)
+      - **Modifier les infos du deck** : Il sera possible de modifier le **nom**/la **description**/le **format du deck** en cliquant sur eux et il se changeront en champs de texte prérempli avec les attibuts actuels du deck.
+      - **Changer la representative du deck** : On pourra changer la carte représentant le deck en cliquant sur un bouton qui ouvrira une popin dans laquelle on pourra selectionner la carte (présente dans le deck) qui sera la représentative.
+      - **Supprimer le deck** Il sera possible de supprimer le deck en cliquand sur "Supprimer le deck". Il y aura une popin de validation.
+      - **Vider le deck** Il sera possible de vider les cartes d'un deck.
+      - **Sauvegarder les modification du deck**: Enregistrer les modifications faite sur le deck
+      - **Importer une liste de cartes** : Via un bouton qui ouvre une popin avec une textarea pour faire un copié collé d'une liste de cartes (au format sur mkm Ex : 5x Forest / 1 Forest)
+    
+      Les autres action présentes lors du mode "Visionnage" seront cachées.
+
 4. Modifier le type d'affichage de ses decks (condensé, étendu, ...) grace à des checkbox/liste déroulante
 5. Visualiser une carte en détail en cliquant dessus (ouvre une fenêtre pop-in)
 6. Visualiser des statistiques sur ses decks (nombre de carte par coût, type de carte, couleur, ...) en cliquant sur l'onglet dédié sur la page du deck sélectionné
