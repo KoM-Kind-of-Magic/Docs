@@ -76,7 +76,7 @@ Fonctionnalitées par ordre d'importance
 7. Définir dès la création de deck les couleurs qu'il voudra jouer grâce à des checkbox 
 8. Choisir le format de son deck(commander, standard, libre, ...) lors de la création du deck ou pendant modification grâce à une liste déroulante
 9. Générer une main aléatoire dans l'onglet statistique, l'utilisateur pourra relancer plusieurs fois cette main (checkbox pour mulligan ou non?)
-10. Importer\exporter des decklists format '.txt, csv, ...) depuis l'interface de visualisation du deck sélectionné
+10. Importer/exporter des decklists format '.txt, csv, ...) depuis l'interface de visualisation du deck sélectionné
 11. Dupliquer un deck (possédé ou celui d'un autre joueur) depuis l'interface de visualisation des decks de l'utilisateur en cliquant sur le bouton dédié
 12. Afficher des cartes pertinantes en fonction des couleurs choisies (à l'aide d'un onglet? bouton qui ouvre une pop-in avec 3 cartes qui pourrait correspondre, un peu comme dans un jeu de carte proposé par Blizzard?)
 13. Visualiser les cartes bannies dans le format choisi (pop-in à l'aide d'un bouton?)
@@ -103,6 +103,7 @@ Fonctionnalitées par ordre d'importance
       - **Type** : Choix du ou des type(s) des cartes affichées (créature, éphémère, rituel, artefact, enchantement, terrain, ...).
       - **Rarity** : Choix de la rareté des cartes affichées (commune, inhabituelle, rare, mythique, timeshifted).
       - **Extension** : Choix de l'extension des cartes affichées (Kamigawa, Ravnica, Dominaria, eldraine, ...).
+      - **Format** : Choix du format des cartes affichées (standard, libre, commander, ...).
 
       <br>autres requêtes nécessaire :
       - **GET** `api/card/{user_search}` : avec **user_search** = tableau contenant les données de toutes les cartes correspondant à la recherche (dont le nom correspond à la recherche spécifiée).
@@ -110,8 +111,8 @@ Fonctionnalitées par ordre d'importance
       
       <br>Ce qui va être retourné :
       - Liste de cartes contenant dans leur nom **UserSearch** et répondant au critères évoqués précédemment (**Colors**, **Type**, **Rarity**, ...).
-    <br>
 
+      <br>
     - **Front** : L'utilisateur devra cliquer, puis, entrer une partie du nom de la carte qu'il la cherche dans le champ **Rechercher**, puis il devra soit presser la touche **ENTRER**, soit appuyer sur le bouton **Valider**. 
       - L'utilisateur pourra cocher une ou plusieurs cases du champ **Couleurs** représentant les 6 couleurs disponibles (
         <img src="img/MagicColorIcons/plain.png" alt="drawing" width="16"/>
@@ -126,6 +127,7 @@ Fonctionnalitées par ordre d'importance
       - L'utilisateur pourra cocher une ou plusieurs cases du champ **Type de carte** représentant les types de la carte recherchée (créature, éphémère, rituel, artefact, enchantement, terrain, ...). 
       - L'utilisateur pourra cocher une ou plusieurs cases du champ **Rareté** représentant la rareté de la carte recherchée (commune, inhabituelle, rare, mythique, timeshifted).
       - L'utilisateur pourra depuis la liste déroulante **Extension** choisir l'extension de la carte recherchée.
+      - L'utilisateur pourra depuis la liste déroulante **Format** choisir le format de jeu (standard, libre, commander, ...) des cartes affichées et donc vérifier si sa carte est acceptée dans le format sélectionné.
       - Les cartes seront affichées sous forme de liste (coût de la carte -> nom de la carte -> au bout de la ligne : extension de la carte).
   
     <br>
@@ -134,7 +136,7 @@ Fonctionnalitées par ordre d'importance
 
     <br>
 3. Aller sur la page détaillée d'une carte en cliquant dessus:
-    - **Back** : Lorsque l'utilisateur cliquera sur une carte, le client web fera une recherche http en methode **GET** sur la route `api/card/{card_id}`.
+    - **Back** : Lorsque l'utilisateur cliquera sur une carte, le client web fera une requette http en methode **GET** sur la route `api/card/{card_id}`.
 
       Les informations générées automatiquement seront:
       - **card_id** : id de la carte sélectionnée.
@@ -149,19 +151,90 @@ Fonctionnalitées par ordre d'importance
       - Le type de la carte (créature, éphémère, rituel, artefact, enchantement, ...).
       - Les effets de la carte.
       - Des détails concernant certains effets (piétinement, célérité, initiative, ...).
-      - La description de la carte
+      - La description de la carte.
 
     <br>
-4. Si connecté, ajouter cette carte à sa collection grâce à un bouton
-5. Rechercher des cartes par format grâce à une liste déroulante (peut être utile pour commander ou pour le standards)
+4. Si connecté, ajouter cette carte à sa collection grâce à un bouton:
+    - **Back** : Lorsque l'utilisateur cliquera sur le bouton "Ajouter à la collection", le client web fera une requette http en methode **PUT** sur la route `api/collection/add_card`.
+
+      <br> Les informations qui devront être renseignées seront :
+      - **Card_id** : L'id de la carte.
+      - **User_id** : L'id de l'utilisateur.
+      
+      <br>
+    - **Front** : Lorsque l'utilisateur cliquera sur le bouton "Ajouter à la collection", une **Pop-in** s'ouvrira lui demandant de valider son choix (Êtes-vous sur de vouloir ajouter cette carte à votre collection ? oui/non), si l'utilisateur appuie sur "oui", un message de confirmation sera affiché (La carte à bien été ajoutée à votre collection.
+
+<br>
 
 ## III. L'utilisateur pourra depuis la page "Collection" 2,5 Mois
-1. Visualiser sa collection de carte de puis l'interface principale
-2. Ajouter une carte qu'il a visualisé depuis une autre page à sa collection grâce à un bouton dédié sur la visualisation de la carte 
-3. Trier les cartes par couleur grâce à des checkbox
-4. Trier les cartes par extension grâce à une liste des extensions 
-5. Trier les cartes par rareté grâce à des checkbox
-6. Visualiser le nombre de carte qu'il possède d'une ou plusieurs extensions (mise en place d'une progress bar)
+1. Visualiser sa collection de carte de puis l'interface principale:
+    - **Back** : Lorsque l'utilisateur arrivera sur la page collection ou modifiera un ou plusieurs paramêtres de tri, le client web fera une requette http en methode **GET** sur la route `api/collection/get_cards`.
+
+      <br>Les informations qui devront être renseignées sont :
+      - **User_id** : L'id de l'utilisateur
+
+      <br>Les informations qui pourront être renseignées sont :
+      - **MinCoveredManaCost** : coût en mana minimum des cartes affichées.
+      - **MaxCoveredManaCost** : coût en mana maximum des cartes affichées.
+      - **Colors** : Choix de la ou les couleur(s) des cartes affichées parmis les 6 disponibles (
+        <img src="img/MagicColorIcons/plain.png" alt="drawing" width="16"/>
+        ,<img src="img/MagicColorIcons/island.png" alt="drawing" width="16"/>
+        ,<img src="img/MagicColorIcons/swamp.png" alt="drawing" width="16"/>
+        ,<img src="img/MagicColorIcons/montain.png" alt="drawing" width="16"/>
+        ,<img src="img/MagicColorIcons/forest.png" alt="drawing" width="16"/>
+        ,<img src="img/MagicColorIcons/colorless.png" alt="drawing" width="16"/>
+      ). 
+      - **Extension** : Choix de l'extension des cartes affichées (Kamigawa, Ravnica, Dominaria, eldraine, ...).
+      - **Rarity** : Choix de la rareté des cartes affichées (commune, inhabituelle, rare, mythique, timeshifted).
+
+      <br>Ce qui va être retourné :
+      - L'intégralité des cartes faisant partie de la collection de l'utilisateur si aucun filtre.
+      - Si un ou plusieurs filtres sont actifs, les cartes seront affichées en prenant en compte ces filtres. 
+
+      <br>
+    - **Front** : Lorsque l'utilisateur arrivera sur la page, toutes les cartes seront affichées sous forme de lignes contenant: 
+      - Le coût de la carte
+      - La couleur de la carte
+      - Le nom de la carte
+      - L'extension de la carte
+
+      <br> Il sera possible de changer ce format pour afficher diréctement une miniature de chaques cartes.
+
+      <br> L'utilisateur pourra depuis la carte "Filtre" :
+      - Spécifié le coût minimum et le coût maximum des cartes à afficher grâce à des zones .
+      - Spécifié, grâce à des checkbox, une ou plusieurs couleurs parmi les 6 disponibles (
+        <img src="img/MagicColorIcons/plain.png" alt="drawing" width="16"/>
+        ,<img src="img/MagicColorIcons/island.png" alt="drawing" width="16"/>
+        ,<img src="img/MagicColorIcons/swamp.png" alt="drawing" width="16"/>
+        ,<img src="img/MagicColorIcons/montain.png" alt="drawing" width="16"/>
+        ,<img src="img/MagicColorIcons/forest.png" alt="drawing" width="16"/>
+        ,<img src="img/MagicColorIcons/colorless.png" alt="drawing" width="16"/>
+      ), les cartes affichées corresponderont toutes aux couleurs spécifiées.
+      -  Spécifié, grâce à une liste déroulante, l'extension des cartes à affiché.
+      -  Spécifié, grâce à une liste déroulante, la rareté des cartes à affiché.
+    
+<br>
+
+2. Visualiser le nombre de carte qu'il possède d'une ou plusieurs extensions (mise en place d'une progress bar):
+    - **Back** : Lorsque l'utilisateur aura renseigner au moins une extension au sein de la carte "Progression" puis appuyer sur le bouton "valider", le client web fera une requette http en methode **GET** sur la route `api/collection/get_progress_bar`.
+
+      <br> Les informations qui devront être renseignés sont :
+      - **ExtensionArray** : Un tableau contenant une ou plusieurs extensions (Kamigawa, Ravnica, Dominaria, eldraine, ...).
+
+      <br> Ce qui va être retourné :
+      - Une **progress bar** représentant le nombre de cartes que l'utilisateur possède dans une ou plusieurs extensions.
+  
+    <br>
+
+    - **Front** : L'utilisateur pourra depuis la carte "Progression": 
+      - Renseigner, grâce à une liste déroulante une première extension.
+      - Renseigner des extensions supplémentaires en appuyant sur le bouton +. 
+      - Retirer une extension de la liste grâce à un bouton - en face de l'extension.
+      - Valider la sélection
+
+      <br> Une fois les choix validés, une bar de progression représentant le nombre de carte par extension renseignées, le nombre total de carte sera également affiché pour pouvoir comparer.
+
+      <br>
 
 ## IV. L'utilisateur pourra depuis la page "Sign in" - 0,5 Mois
 1. Se connecter à son compte avec son pseudo ou son adresse mail, et un mot de passe
