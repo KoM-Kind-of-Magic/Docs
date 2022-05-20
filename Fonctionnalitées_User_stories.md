@@ -124,17 +124,37 @@ Fonctionnalitées par ordre d'importance
     - **Front** : Cliquer sur la une carte ouvrira un autre onglet qui redirige vers la page de présentation d'une carte.
 
 
-Visualiser une carte en détail en cliquant dessus (ouvre une fenêtre pop-in)
+6. Onglet statistique d'un deck :
+    - **Back** : Lors du chargement de la page, le client web fera une requette HTTP en méthode **GET** sur la route `api/deck-stats/{deck_id}`. 
+    <br>Cette appel à la méthode reverra les informations nécéssaires à la réalisation des graphiques présenté dans la partie front dans un objet JSON comportant une liste pour chaque graphique.
 
-6. Visualiser des statistiques sur ses decks (nombre de carte par coût, type de carte, couleur, ...) en cliquant sur l'onglet dédié sur la page du deck sélectionné
-7. Définir dès la création de deck les couleurs qu'il voudra jouer grâce à des checkbox 
-8. Choisir le format de son deck(commander, standard, libre, ...) lors de la création du deck ou pendant modification grâce à une liste déroulante
-9. Générer une main aléatoire dans l'onglet statistique, l'utilisateur pourra relancer plusieurs fois cette main (checkbox pour mulligan ou non?)
-10. Importer/exporter des decklists format '.txt, csv, ...) depuis l'interface de visualisation du deck sélectionné
-11. Dupliquer un deck (possédé ou celui d'un autre joueur) depuis l'interface de visualisation des decks de l'utilisateur en cliquant sur le bouton dédié
-12. Afficher des cartes pertinantes en fonction des couleurs choisies (à l'aide d'un onglet? bouton qui ouvre une pop-in avec 3 cartes qui pourrait correspondre, un peu comme dans un jeu de carte proposé par Blizzard?)
-13. Visualiser les cartes bannies dans le format choisi (pop-in à l'aide d'un bouton?)
-14. Se faire recommandé des cartes pertinantes pour son deck grâce à un bouton dédié sur la page du deck sélectionné
+      <br>
+    - **Front** : Sur la page de visualisation d'un deck on aura accès à un onglet Statistiques. Lors du chargement des statistiqques d'un deck, l'utilisateur verra un spinner qui disparaîtra lorsque les données sur les deck seront arrivées au navigateur. Les données seront affichées via 4 graphiques :
+      - **Courbe de mana** : Un croube représentant le nombre de cartes par rapport à leurs coût convertit de mana (Les cartes avec un coût `X` auront `X` = 0)
+      - **Répartition par type de cartes** : Diagramme circulaire (Donut) pour voir la répartition des cartes du deck par types de cartes (Terrains, Créatures et Sorts)
+      - **Répartition des couleurs dans les coût convertis de mana des cartes** : Diagramme circulaire (Donut) permettant de voir la répartitions des couleurs dans les coût convertis de mana des cartes du deck. Chaque symbole de mana coloré dans le coût d'une carte augmente le taux de couleur du deck dans lequel se trouve la carte. 
+      (<img src="img/MagicColorIcons/plain.png" alt="drawing" width="16"/>
+      ,<img src="img/MagicColorIcons/island.png" alt="drawing" width="16"/>
+      ,<img src="img/MagicColorIcons/swamp.png" alt="drawing" width="16"/>
+      ,<img src="img/MagicColorIcons/montain.png" alt="drawing" width="16"/>
+      ,<img src="img/MagicColorIcons/forest.png" alt="drawing" width="16"/>
+      ,<img src="img/MagicColorIcons/colorless.png" alt="drawing" width="16"/>)
+      - **Répartition des couleurs de terrains du deck** : Diagramme circulaire (Donut) permettant de visualiser les couleurs pouvant être générées par les terrains du deck. 
+      (<img src="img/MagicColorIcons/plain.png" alt="drawing" width="16"/>
+      ,<img src="img/MagicColorIcons/island.png" alt="drawing" width="16"/>
+      ,<img src="img/MagicColorIcons/swamp.png" alt="drawing" width="16"/>
+      ,<img src="img/MagicColorIcons/montain.png" alt="drawing" width="16"/>
+      ,<img src="img/MagicColorIcons/forest.png" alt="drawing" width="16"/>
+      ,<img src="img/MagicColorIcons/colorless.png" alt="drawing" width="16"/>)
+      - **Répartition par catégories de cartes** : Diagramme circulaire (Donut) pour voir la répartition des cartes du deck par catégories de cartes (Créatures, Artéfacts, Terrains, Enchantements, Planeswalker, Ephemères, Rituels, Etc...)
+      
+      La partie statistique proposera également une partie qui prsentera une première main possible au début d'une partie jouée avec ce deck, avec possibilité de muligan.
+
+7. Importer/exporter des decklists format '.txt, csv, ...) depuis l'interface de visualisation du deck sélectionné
+8. Dupliquer un deck (possédé ou celui d'un autre joueur) depuis l'interface de visualisation des decks de l'utilisateur en cliquant sur le bouton dédié
+9. Afficher des cartes pertinantes en fonction des couleurs choisies (à l'aide d'un onglet? bouton qui ouvre une pop-in avec 3 cartes qui pourrait correspondre, un peu comme dans un jeu de carte proposé par Blizzard?)
+10. Visualiser les cartes bannies dans le format choisi (pop-in à l'aide d'un bouton?)
+11. Se faire recommandé des cartes pertinantes pour son deck grâce à un bouton dédié sur la page du deck sélectionné
 
 ## II. L'utilisateur pourra depuis la page "Search" - 1,5 Mois
 1. Rechercher une carte en particulier en entrant le nom de la carte dans le champ "rechercher" (Réfléchir à comment afficher les résultats):
