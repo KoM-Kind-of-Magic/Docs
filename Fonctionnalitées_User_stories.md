@@ -71,7 +71,7 @@ Fonctionnalitées par ordre d'importance
     Losqu'on clique sur la **DeckRepresentative** d'un deck, on est redirigé vers la page du deck.
 
 3. Modification d'un Deck:
-    - **Back** :  Après validation des modification, le client web fera une requette HTTP en méthode **POST** sur la route `api/deck/update-deck`. Seule les informations modifiées seront envoyées (Ex : si on ne modifie pas le nom du deck, l'attribut **DeckName** ne sera pas envoyé).
+    - **Back** : Après validation des modification, le client web fera une requette HTTP en méthode **POST** sur la route `api/deck/update-deck`. Seule les informations modifiées seront envoyées (Ex : si on ne modifie pas le nom du deck, l'attribut **DeckName** ne sera pas envoyé).
     <br> Les informations requises seront:
       - **DeckId** : L'identifiant du deck (Int)
     
@@ -105,8 +105,27 @@ Fonctionnalitées par ordre d'importance
     
       Les autres action présentes lors du mode "Visionnage" seront cachées.
 
-4. Modifier le type d'affichage de ses decks (condensé, étendu, ...) grace à des checkbox/liste déroulante
-5. Visualiser une carte en détail en cliquant dessus (ouvre une fenêtre pop-in)
+4. Modifier l'affichage d'une Decklist:
+    - **Back** : Le type de vue sera sauvegardé, soit dans la base de données via requette HTTP en méthode **POST** sur la route `api/user/update-user-pref` soit dans le navigateur via des cookies.
+
+      <br>
+    - **Front** : Sur la page de visualisation d'un deck, il sera possible de modifier l'affichage de la Decklist via des radios buttons. Changer de type d'affichage via ces boutons ne rechargera pas la page.
+    <br> Les trois types d'affichage disponnibles seront:
+      - Vue en liste: Sur une seule colonne, à l'image de ce [site](https://www.lotusnoir.info/magic/decks/rokiric-v1/).
+      - Vue par catégorie : Sur plusieurs colonnes, à l'image de ce [site](https://deckstats.net/decks/157815/1688099-rakdos-eldrazi).
+      - Vue par image : Séparé par catégories, à l'image de ce [site](https://edhrec.com/deckpreview/8up7SBQPWiPPp7QfCNOxWA).
+
+<br>
+
+5. Redirection vers la page d'une carte: 
+    - **Back** : La redirection se fera vers un lien tel que : `https://kindofmagic.fr/card/{card_uuid}`
+
+      <br>
+    - **Front** : Cliquer sur la une carte ouvrira un autre onglet qui redirige vers la page de présentation d'une carte.
+
+
+Visualiser une carte en détail en cliquant dessus (ouvre une fenêtre pop-in)
+
 6. Visualiser des statistiques sur ses decks (nombre de carte par coût, type de carte, couleur, ...) en cliquant sur l'onglet dédié sur la page du deck sélectionné
 7. Définir dès la création de deck les couleurs qu'il voudra jouer grâce à des checkbox 
 8. Choisir le format de son deck(commander, standard, libre, ...) lors de la création du deck ou pendant modification grâce à une liste déroulante
