@@ -190,10 +190,10 @@ Visualiser une carte en détail en cliquant dessus (ouvre une fenêtre pop-in)
 
     <br>
 3. Aller sur la page détaillée d'une carte en cliquant dessus:
-    - **Back** : Lorsque l'utilisateur cliquera sur une carte, le client web fera une requette http en methode **GET** sur la route `api/card/{card_id}`.
+    - **Back** : Lorsque l'utilisateur cliquera sur une carte, le client web fera une requette http en methode **GET** sur la route `api/card/{card_uuid}`.
 
       Les informations générées automatiquement seront:
-      - **card_id** : id de la carte sélectionnée.
+      - **card_uuid** : id de la carte sélectionnée.
 
       <br>Ce qui va être retourné : 
       - L'image de la carte.
@@ -212,7 +212,7 @@ Visualiser une carte en détail en cliquant dessus (ouvre une fenêtre pop-in)
     - **Back** : Lorsque l'utilisateur cliquera sur le bouton "Ajouter à la collection", le client web fera une requette http en methode **PUT** sur la route `api/collection/add_card`.
 
       <br> Les informations qui devront être renseignées seront :
-      - **Card_id** : L'id de la carte.
+      - **Card_uuid** : L'id de la carte.
       - **User_id** : L'id de l'utilisateur.
       
       <br>
@@ -309,7 +309,7 @@ Visualiser une carte en détail en cliquant dessus (ouvre une fenêtre pop-in)
 
 ## IV. L'utilisateur pourra depuis la page "Sign in" - 0,5 Mois
 1. Se connecter à son compte avec son pseudo ou son adresse mail, et un mot de passe:
-    - **Back** : Lorsque l'utilisateur aura renseigner chaque champ disponible, le client web fera une requette http en methode **POST** sur la route `api/login`
+    - **Back** : Si **Username**/**Email** existe dans la base de donnée et **Password** correspond, l'utilisateur sera redirigé vers la page "search" : `https://kindofmagic.fr/search` 
 
       <br>Les informations qui devront être renseignées :
       - **Username** ou **Email** : un nom d'utilisateur existant/un email existant
@@ -320,14 +320,40 @@ Visualiser une carte en détail en cliquant dessus (ouvre une fenêtre pop-in)
     - **Front** : L'utilisateur devra remplir 2 champs: 
       - Le 1er champ contiendra son email ou son nom d'utilisateur
       - Le 2ème champ contiendra son mot de passe
-      - Les informations devront correspondre et être présentes dans la **table User de la base de donnée**
 
-      <br> Une fois les 2 champs remplis, l'utilisateur pourra se connecter en appuyant sur le bouton "login", si ses identifiants sont invalides, un message d'erreur apparaitre ("Votre Username/Email n'existe pas" si l'utilisateur n'existe pas dans la base de donnée et "Votre mot de passe est erroné, veuillez réessayer", si l'utilisateur existe mais le mot de passe ne correspond pas), si les identifiants sont bons, l'utilisateur sera redirigé sur la page "search".
+      <br>Une fois les 2 champs remplis, l'utilisateur pourra se connecter en appuyant sur le bouton "login", si ses identifiants sont invalides, un message d'erreur apparaitre ("Votre Username/Email n'existe pas" si l'utilisateur n'existe pas dans la base de donnée et "Votre mot de passe est erroné, veuillez réessayer", si l'utilisateur existe mais le mot de passe ne correspond pas).
 
     <br>
 
-2. S'inscrire en renseignant une adresse e-mail, un pseudo, un mot de passe et une confirmation de ce mot de passe (à voir si besoin de plus d'info)
+2. S'inscrire en renseignant une adresse e-mail, un nom d'utilisateur, un mot de passe et une confirmation de ce mot de passe (à voir si besoin de plus d'info):
+    - **Back** : Si **Username** et **Email** n'existent pas dans la base de donnée et **Password** = **PasswordConfirm**, le compte sera créer dans la base de donnée et l'utilisateur redirigé vers la page login : `https://kindofmagic.fr/login`.
+
+      <br>Les informations qui devront être renseignées :
+      - **Username** : un nom d'utilisateur non existant
+      - **Email** : un email  non existant
+      - **Password** : un mot de passe
+      - **PasswordConfirm** : **Password**
+
+    <br>
+
+    - **Front** : L'utilisateur devra obligatoirement remplir les 4 champs :
+      - Le 1er champ contiendra le nom d'utilisateur qu'il souhaite avoir
+      - Le 2ème champ contiendra son adresse email
+      - Le 3ème champ contiendra son mot de passe
+      - Le 4ème champ contiendra la confirmation de son mot de passe
+
+      <br>Une fois les 4 champs remplis, l'utilisateur va pouvoir créer son compte en cliquant sur le bouton "Sign up", si le nom d'utilisateur ou l'email existent déjà, un message d'erreur sera être retourné ("Votre nom d'utilisateur est déjà pris" si le nom d'utilisateur existe déjà et "Cet email est déjà assigné à un compte", si l'email existe déjà). 
+
+      <br>Si le mot de passe utilisateur est différent de celui renseigné dans le champ **"password confirmation"**, un message d'erreur sera retourné ("Echec à la validation du mot passe").
+
+      <br>
+
 3. Se connecter avec son compte google ou autre (OAuth) avec un bouton dédié
+    - **Back** : Lorsque l'utilisateur se connecte avec un compte google, la connection se fera après validation de l'utilisateur, celui-ci sera redirigé vers la page "search" : `https://kindofmagic.fr/search`.
+
+    <br>
+
+    - **Front** : L'utilisateur pourra cliquer sur le bouton **"Connection avec votre compte google"** via la page "login", puis il devra selectionner le compte avec lequel il veut se connecter et valider la connection via son portable (authenticator par défaut lors de l'utilisation d'un compte google). 
 
 ## V. L'utilisateur pourra depuis la page "User profile" - 0,5 Mois
 1. Modifier son email en renseignant au préhalable son email actuel et son mot de passe
