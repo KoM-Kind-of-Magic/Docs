@@ -150,11 +150,58 @@ Fonctionnalitées par ordre d'importance
       
       La partie statistique proposera également une partie qui prsentera une première main possible au début d'une partie jouée avec ce deck, avec possibilité de muligan.
 
-7. Importer/exporter des decklists format '.txt, csv, ...) depuis l'interface de visualisation du deck sélectionné
-8. Dupliquer un deck (possédé ou celui d'un autre joueur) depuis l'interface de visualisation des decks de l'utilisateur en cliquant sur le bouton dédié
-9. Afficher des cartes pertinantes en fonction des couleurs choisies (à l'aide d'un onglet? bouton qui ouvre une pop-in avec 3 cartes qui pourrait correspondre, un peu comme dans un jeu de carte proposé par Blizzard?)
-10. Visualiser les cartes bannies dans le format choisi (pop-in à l'aide d'un bouton?)
-11. Se faire recommandé des cartes pertinantes pour son deck grâce à un bouton dédié sur la page du deck sélectionné
+7. Import de decklists :
+    - **Back** : Lors de la validation, le client web fera une requette HTTP en méthode **POST** sur la route `api/deck/add-card-list`. Cette méthode nécéssitera une vérification de l'input avant toute recherche dans la base car le client peux tenter des inputs malicieux.
+    <br> Les informations requises seront:
+      - **DeckId** : Identifiant en base de données du deck (Int)
+      - **CardList** : La liste des cartes qui sera a ajouter (Text **can be null**)
+
+      <br>
+    - **Front** : Sur la page d'un deck en mode Edition, il sera possible d'ajouter une liste de cartes en cliquant sur un bouton qui ouvrira une modale (popin) dans laquelle il y aura une textArea. Dans la textArea on pourra rentrer une liste de carte sous la forme : **nbCard**x **cardName**
+    <br> Exemple : 
+      - 1x Lotus Cobra
+      - 1x Field of the dead
+      - 5x Forest
+      - 4x Island
+
+      Une fois que la liste est rentrée, il sera possible de valider l'import des cartes listées. Après la validation la popin se videra et elle affichera le compte rendu de l'import. Dans le compte rendu on saura quelles cartes ont été ajoutées au deck et quelles cartes n'auront pas été trouvées.
+    <br> Exemple : 
+      - "Lotus Cobra" added 1 time
+      - "Field of the dead" was not found in card database
+      - "Forest" added 5 times
+      - "Island" added 4 times
+
+8. Export de decklists :
+    - **Back** : Lors de la validation, le client web fera une requette HTTP en méthode **GET** sur la route `api/deck/download-deck-list/{deck_id}`.
+    <br> Lors de l'appel sur cette route, le backend générera un fichier texte qu'il envera au client.
+
+      <br>
+    - **Front** : Sur la page d'un deck en mode visionnage, il sera possible d'exporter la liste des cartes présentes dans le deck en cliquant sur un bouton "Exporter la decklist". Cliquer sur ce bouton actionnera le téléchargement d'un .txt (par défaut) contenant la liste des cartes sous la forme : **nbCard**x **cardName**
+    <br> Exemple : 
+      - 1x Lotus Cobra
+      - 1x Field of the dead
+      - 5x Forest
+      - 4x Island
+
+9. Dupliquer un deck :
+    - **Back** : Lors du clic sur le bouton de duplication, le client web fera une requette HTTP en méthode **POST** sur la route `api/deck/dupplicate-deck/{deck_id}`. Cette méthode dupliquera toutes les information d'un deck dans un autre nouveau deck et y ajoutera les la liste des cartes présentes dans le deck dupliqué.
+    <br> Les informations requises seront:
+      - **DeckId** : Identifiant en base de données du deck (Int)
+
+      <br>
+    - **Front** : Sur la page de visualisation des decks, il sera possible de dupliquer un deck en cliquant sur un bouton "Dupliquer ce deck". Le nouveau deck sera ajouté à la liste des decks de l'utilisateur connecté. Le bouton de duplication sera également présent sur la page Community decklists pour dupliquer les decks d'autres utilisateurs.
+
+10. Visualiser les cartes bannies dans le format du deck et les surligner dans la decklist:
+    - **Back** : Lors du clic sur le bouton de vérification de la légalité, le client web fera une requette HTTP en méthode **GET** sur la route `api/deck/deck-legality/{deck_id}`. Cette méthode vérifiera que les cartes présentes dans le deck sont bien autorisée dans le format choisi du deck, si le deck n'a pas de format, toutes les cartes seront validées et "Pas de format selectioné" sera renvoyé.
+    <br> Les informations requises seront:
+      - **DeckId** : Identifiant en base de données du deck (Int)
+      - **CardList** : Tableau JSON contenant l'uuid des cartes composant le deck au moment du click sur le bouton coté client avec le nombre d'exemplaire. (Json)
+
+      <br>
+    - **Front** : Sur la page d'un deck en mode edition, il sera possible de vérifier la légalité d'un deck en cliquant sur un bouton "Vérifier la légalité". Au retour de l'appel à l'api, les cartes non légales présentes dans le deck seront surlignées avec un tooltip qui explique ce que veux dire le surlignage lorsqu'on passe la souris sur la carte.
+
+11. Afficher des cartes pertinantes en fonction des couleurs choisies (à l'aide d'un onglet? bouton qui ouvre une pop-in avec 3 cartes qui pourrait correspondre, un peu comme dans un jeu de carte proposé par Blizzard?)
+12. Se faire recommander des cartes pertinantes pour son deck grâce à un bouton dédié sur la page du deck sélectionné
 
 ## II. L'utilisateur pourra depuis la page "Search" - 1,5 Mois
 1. Rechercher une carte en particulier en entrant le nom de la carte dans le champ "rechercher" (Réfléchir à comment afficher les résultats):
