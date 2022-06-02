@@ -70,7 +70,7 @@ Fonctionnalitées par ordre d'importance
     <br>
     Losqu'on clique sur la **DeckRepresentative** d'un deck, on est redirigé vers la page du deck.
 
-3. Modification d'un Deck:
+3. Modification d'un Deck: :warning:  Si l'utilisateur connecté n'est pas le créateur du deck, il ne pourra pas le modifier.
     - **Back** : Après validation des modification, le client web fera une requette HTTP en méthode **POST** sur la route `api/deck/update-deck`. Seule les informations modifiées seront envoyées (Ex : si on ne modifie pas le nom du deck, l'attribut **DeckName** ne sera pas envoyé).
     <br> Les informations requises seront:
       - **DeckId** : L'identifiant du deck (Int)
@@ -429,9 +429,28 @@ Fonctionnalitées par ordre d'importance
 4. Modifier ses informations utilisateur en modifiant le contenu des champs dédiés 
 
 ## VI. L'utilisateur pourra depuis la page "Community decklists" (visualisation de decks/éxemples d'autres utilisateurs) - 1,5 Mois
-1. Visualiser des decklists en cliquant dessus
-2. Exporter une decklist au format .txt pour que l'utilisateur puisse l'importer dans sa decklist
-3. Trier les decklists en fonction du format grâce à une liste déroulante
+1. Voir les derniers deck publié par tout les utilisateur:
+    - **Back** : Lorsque l'utilisateur arrivera sur la page Community decklists, le client web fera une requette http en methode **GET** sur la route `api/community/get-last-decks`. Cette méthode récupérera tout les decks qui ont été créés par tout les utilisateurs et les renverra au client dans un tableau JSON avec les decks classé par date du plus récent au plus ancient.
+    <br>
+
+    - **Front** : Lors du chargement des decks, l'utilisateur verra un spinner qui disparaîtra lorsque les données sur les deck seront arrivées au navigateur. Si il y a beaucoup de deck, une pagination sera mise en place avec 20 decks par page. Si l'utilisateur clique sur un deck affiché, il sera redirigé vers la page d visualisation du deck depuis laquelle il pourra voir la decklist, exporter la decklist ou encore le dupliquer dans sa collection de decks. En revance si l'utilisateur n'est pas l'auteur du deck, il ne pourra pas le modifier/supprimer.
+    <br> 
+    Les informations disponnibles sur les miniatures des decks seront : 
+      - Les couleurs du deck
+      - La représentative du deck (Si il n'y en a pas, un dos de carte)
+      - Le créateur du deck
+      - La date de création du deck
+
+2. Rechercher des decks :
+    - **Back** : Lorsque l'utilisateur effectuera un recherche, le client web ferra un requete http en methode **GET** sur la route `api/community/search-deck`. La recherche pourra se faire par nom de deck (**DeckName**), par couleur (**DeckColor**), par format (**DeckFormat**) et si le format choisi est "Commander" ou "Brawl", il sera possible de chercher des deck par rapport à leurs carte de commandant (**DeckRepresentative**)
+
+    <br>
+    - **Front** : Il sera possible pour l'utilisateur de rechercher des decks. L'utilisateur aura à disposition une barre de recherche en haut de la page au dessus de la où s'affichent les decks affiché au chargement de la page ou apres une recherche. Cette barre de recherche servira à chercher les deck par leurs nom. Si l'utilisateur clique sur recherche avancées, il pourra ajouter les paramètres suivant à sa recherche :
+      - **DeckColor** : La couleur du deck (Enum)
+      - **DeckFormat** : Le format du deck (Enum)
+      - **CardName** : Le nom du commandant, si le format choisir est Commander (Text)
+
+3. Trier les decklists affichées du plus récent au plus ancient ou l'inverse.
 
 ## VII. L'utilisateur pourra depuis la page "Definition" - 2 Mois
 1. Consulter la définition de n'importe quel effet qu'il ne comprend pas (wiki)
