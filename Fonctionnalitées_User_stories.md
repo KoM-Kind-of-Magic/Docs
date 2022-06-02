@@ -423,10 +423,49 @@ Fonctionnalitées par ordre d'importance
     - **Front** : L'utilisateur pourra cliquer sur le bouton **"Connection avec votre compte google"** via la page "login", puis il devra selectionner le compte avec lequel il veut se connecter et valider la connection via son portable (authenticator par défaut lors de l'utilisation d'un compte google). 
 
 ## V. L'utilisateur pourra depuis la page "User profile" - 0,5 Mois
-1. Modifier son email en renseignant au préhalable son email actuel et son mot de passe
-2. Modifier son mot de passe en renseignant son email et son mot de passe actuel, puis en rentrant et en confirmant le nouveau mot de passe dans les champs dédiés
-3. Modifier son pseudo comme il le souhaite en modifiant le champ "pseudo" 
-4. Modifier ses informations utilisateur en modifiant le contenu des champs dédiés 
+1. Modifier son email en renseignant au préhalable son email actuel, le nouvel email et son mot de passe:
+    - **Back** : Lorsque l'utilisateur aura rempli les 3 champs (current email, new email et password), le client web fera une requette http en methode **PUT** sur la route `api/user/put`.
+
+      <br> Les informations qui devront être renseignées :
+      - **Email** : l'email actuel de l'utilisateur
+      - **Password** : le mot de passe de l'utilisateur 
+      - **NewEmail** : l'email que l'utilisateur veut utiliser
+    
+    <br>
+
+    - **Front** : L'utilisateur devra, depuis la page profil, cliquer sur un bouton **Edit**, situé à gauche du champ **Email**, une **pop-in** contenant 3 champs (current email, new email et password) et un bouton **Modify**. Une fois les 3 champs rempli, en appuyant sur le bouton **Modify**, un message apparaitra validant la modification si celle-ci à bien fonctionnée. En cas de disfonctionnement un message d'erreur sera affiché ("This email is already used by another account or does not exists").
+
+  <br>
+
+2. Modifier son mot de passe en renseignant le nouveau mot de passe, et en le confirmant:
+    - **Back** : Lorsque l'utilisateur aura rentrer et confirmer son nouveau mot de passe, le client web fera une requette http en methode **PUT** sur la route `api/user/put`.
+
+      <br> Les informations qui devront être renseignées :
+      - **Email** : l'email actuel de l'utilisateur
+      - **IsValidated** : booléen confirmant que l'utilisateur est bien passé par le lien qui lui a été envoyé (voir front)
+      - **NewPassword** : le nouveau mot de passe 
+    
+    <br>
+
+  - **Front** : L'utilisateur, en cliquant sur le lien **Password modification**, recevra un email lui demandant de cliquer sur un lien, renvoyant l'utilisateur vers la page `https://kindofmagic.fr/password-modification/{user_id}` (accessible uniquement depuis ce lien).
+  Depuis ce lien l'utilisateur devra rentrer son nouveau mot de passe, le confirmer puis appuyer sur le bouton **Modify**. Une fois le mot de passe modifié, l'utilisateur sera redirigé sur la page **Profil**.
+
+  <br>
+
+3. Modifier ses informations utilisateur en modifiant le contenu des champs dédiés:
+    - **Back** : Lorsque l'utilisateur aura modifier le contenu d'un ou plusieurs champs de profil et cliquer sur le bouton **Save**, le client web fera une requette http en methode **PUT** sur la route `api/user/put`.
+
+      <br> Les informations qui pourront être renseignées :
+      - **Username** : le pseudo de l'utilisateur
+      - **Description** : la description de l'utilisateur
+      - **Tel** : le numéro de téléphone de l'utilisateur
+      - **ProfilPicture** : la photo de profil de l'utilisateur
+
+    <br>
+
+    - **Front** : L'utilisateur pourra modifier sa **Photo de profil** et les champs **Username**, **Description**, **Phone number** à volonté depuis la page profil, puis en cliquant sur le bouton **Register**, disponible uniquement si un champ a été modifié. Un message de confirmation sera ensuite affiché sur la page.
+
+    <br>
 
 ## VI. L'utilisateur pourra depuis la page "Community decklists" (visualisation de decks/éxemples d'autres utilisateurs) - 1,5 Mois
 1. Voir les derniers deck publié par tout les utilisateur:
