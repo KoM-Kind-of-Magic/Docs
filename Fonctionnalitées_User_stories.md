@@ -92,8 +92,7 @@ Fonctionnalitées par ordre d'importance
 
       <br>
     - **Front** : Sur la page de visualisation d'un deck, il sera possible de passer en mode Edition afin de pouvoir modifier les cartes qui sont dans le deck.
-    <br>
-    En mode Edition, les actions affichées seront : 
+    <br> En mode Edition, les actions affichées seront : 
       - **Champ de recherche**: Il permettra de chercher des cartes à ajouter dans le deck. Les résultats de la recherche seront affiché en dessous du champs de recherche apres chaque input. Quand on passe la souris au dessus du nom de la carte dans les résultats de recherche, on peux voir la carte (Dans la langue choisi dans le profil utilisateur)
       - **Ajuster le nombre de cartes dans le deck** : Sur chaque cartes il sera possible de modifier le nombre d'exemplaires dans le deck (si 0 retirer la carte au moment de la sauvegarde)
       - **Modifier les infos du deck** : Il sera possible de modifier le **nom**/la **description**/le **format du deck** en cliquant sur eux et il se changeront en champs de texte prérempli avec les attibuts actuels du deck.
@@ -484,6 +483,7 @@ Fonctionnalitées par ordre d'importance
     - **Back** : Lorsque l'utilisateur effectuera un recherche, le client web ferra un requete http en methode **GET** sur la route `api/community/search-deck`. La recherche pourra se faire par nom de deck (**DeckName**), par couleur (**DeckColor**), par format (**DeckFormat**) et si le format choisi est "Commander" ou "Brawl", il sera possible de chercher des deck par rapport à leurs carte de commandant (**DeckRepresentative**)
 
     <br>
+    
     - **Front** : Il sera possible pour l'utilisateur de rechercher des decks. L'utilisateur aura à disposition une barre de recherche en haut de la page au dessus de la où s'affichent les decks affiché au chargement de la page ou apres une recherche. Cette barre de recherche servira à chercher les deck par leurs nom. Si l'utilisateur clique sur recherche avancées, il pourra ajouter les paramètres suivant à sa recherche :
       - **DeckColor** : La couleur du deck (Enum)
       - **DeckFormat** : Le format du deck (Enum)
