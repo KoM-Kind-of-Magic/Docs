@@ -75,7 +75,6 @@ Fonctionnalitées par ordre d'importance
     <br> Les informations requises seront:
       - **DeckId** : L'identifiant du deck (Int)
     
-      <br> 
       Les informations optionnelles (à envoyer seulement si elles sont modifiées) seront :
       - **DeckName** : Nom du deck (String)
       - **DeckFormat** : Format du deck (Choix parmi une Liste -> Commander, Standard, Modern, etc...) (Enum)
