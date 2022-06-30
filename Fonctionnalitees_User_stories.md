@@ -1,7 +1,7 @@
 # Analyse des retours 
 Fonctionnalitées par ordre d'importance
 
-## I. L'utilisateur pourra depuis la page "User decklists" - 3 Mois
+## I. L'utilisateur pourra depuis la page "User decklists" - 4 Mois
 1. Créer un deck : 
     - **Back** : Après validation du formulaire, le client web fera une requette HTTP en méthode **POST** sur la route `api/deck/create-deck`. 
       <br> Les informations requises seront:
