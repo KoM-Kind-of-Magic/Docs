@@ -51,7 +51,7 @@ We will use ECMAScript 6 (ECMAScript 2015) to benefit from latest features of th
 
 ### Front-end
 
-We will use the official ESLint plugin for Vue.js. This plugin is already setup with a Vue2 clean project.
+We will use the official ESLint plugin for Vue.js. This plugin is already setup with a Vue3 clean project.
 
 This plugin is usefull to :
 - Finds syntax errors.
