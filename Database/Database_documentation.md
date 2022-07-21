@@ -43,3 +43,10 @@ Step 3:
 
 Step 4:
 - If the previous step indicates that the card is not already in the database, it is inserted into the database
+
+
+---
+
+1. create datebase KOM;
+2. source AllPrintings.sql (for cards ...)
+3. source export.sql (for users ...)

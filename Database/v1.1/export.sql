@@ -18,9 +18,9 @@ CREATE TABLE `deck` (
   `representing_card_uuid` varchar(255)
 );
 
-CREATE TABLE `cards` (
-  `uuid` varchar(255) PRIMARY KEY
-);
+-- CREATE TABLE `cards` (
+--   `uuid` varchar(255) PRIMARY KEY
+-- );
 
 CREATE TABLE `user_card` (
   `user_id` int,
